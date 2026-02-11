@@ -48,7 +48,7 @@
   h5,
   h6 {
     @apply font-heading uppercase;
-    letter-spacing: 15px;
+    letter-spacing: 15px !important;
   }
 }
 
