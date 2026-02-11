@@ -48,7 +48,12 @@
   h5,
   h6 {
     @apply font-heading uppercase;
-    letter-spacing: 15px !important;
+    /* Responsive expansive letter-spacing */
+    letter-spacing: 4px !important;
+
+    @media (min-width: 768px) {
+      letter-spacing: 15px !important;
+    }
   }
 }
 

@@ -17,7 +17,7 @@
 | Componentes UI | shadcn/ui |
 | Animaciones | GSAP |
 | Base de Datos | Neon (PostgreSQL Serverless) |
-| ORM | Drizzle ORM |
+| ORM | Prisma |
 | Deployment | Dokploy |
 
 ---
