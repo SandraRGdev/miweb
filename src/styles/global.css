@@ -1,25 +1,36 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'abovethebeyond';
+  src: url('../fonts/AbovetheBeyondSerif-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-forest: #14331f;
   --color-deep-black: #011314;
   --color-lime: #dffe02;
 
-  --font-heading: "Syne", "abovethebeyond", sans-serif;
+  --font-heading: "abovethebeyond", "Syne", sans-serif;
   --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 @layer base {
   :root {
-    --background: 184 92% 4%; /* #011314 approximated to HSL */
-    --foreground: 70 100% 50%; /* #DFFE02 approximated */
-    
+    --background: 184 92% 4%;
+    /* #011314 approximated to HSL */
+    --foreground: 70 100% 50%;
+    /* #DFFE02 approximated */
+
     --primary: 70 100% 50%;
     --primary-foreground: 184 92% 4%;
-    
-    --secondary: 143 43% 14%; /* #14331F approximated */
+
+    --secondary: 143 43% 14%;
+    /* #14331F approximated */
     --secondary-foreground: 70 100% 50%;
-    
+
     --radius: 0.5rem;
   }
 
@@ -30,7 +41,12 @@
     height: 100%;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading uppercase;
   }
 }
