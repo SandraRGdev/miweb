@@ -1,0 +1,114 @@
+---
+---
+
+<div class="nav-glassmorphism p-8 md:p-12 w-full max-w-2xl mx-auto border border-lime/20 relative overflow-hidden">
+  <div class="absolute -top-24 -right-24 w-48 h-48 bg-lime/10 blur-[60px] rounded-full"></div>
+  
+  <form id="contact-form" class="space-y-8 relative z-10">
+    <div class="group relative">
+      <input 
+        type="text" 
+        name="name" 
+        required 
+        class="w-full bg-transparent border-b-2 border-white/20 py-3 text-lg outline-none focus:border-lime transition-colors peer"
+        placeholder=" "
+      />
+      <label class="absolute left-0 top-3 text-white/40 pointer-events-none transition-all peer-focus:-top-6 peer-focus:text-lime peer-focus:text-sm peer-[:not(:placeholder-shown)]:-top-6 peer-[:not(:placeholder-shown)]:text-lime peer-[:not(:placeholder-shown)]:text-sm">
+        NOMBRE COMPLETO
+      </label>
+    </div>
+
+    <div class="group relative">
+      <input 
+        type="email" 
+        name="email" 
+        required 
+        class="w-full bg-transparent border-b-2 border-white/20 py-3 text-lg outline-none focus:border-lime transition-colors peer"
+        placeholder=" "
+      />
+      <label class="absolute left-0 top-3 text-white/40 pointer-events-none transition-all peer-focus:-top-6 peer-focus:text-lime peer-focus:text-sm peer-[:not(:placeholder-shown)]:-top-6 peer-[:not(:placeholder-shown)]:text-lime peer-[:not(:placeholder-shown)]:text-sm">
+        CORREO ELECTRÓNICO
+      </label>
+    </div>
+
+    <div class="group relative">
+      <select 
+        name="projectType" 
+        class="w-full bg-transparent border-b-2 border-white/20 py-3 text-lg outline-none focus:border-lime transition-colors appearance-none"
+      >
+        <option value="" disabled selected class="bg-deep-black">TIPO DE PROYECTO</option>
+        <option value="web" class="bg-deep-black">Desarrollo Web</option>
+        <option value="design" class="bg-deep-black">Diseño UI/UX</option>
+        <option value="full" class="bg-deep-black">Pack Completo</option>
+      </select>
+      <div class="absolute right-0 top-4 pointer-events-none text-lime">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </div>
+    </div>
+
+    <div class="group relative">
+      <textarea 
+        name="message" 
+        required 
+        rows="4" 
+        class="w-full bg-transparent border-b-2 border-white/20 py-3 text-lg outline-none focus:border-lime transition-colors peer resize-none"
+        placeholder=" "
+      ></textarea>
+      <label class="absolute left-0 top-3 text-white/40 pointer-events-none transition-all peer-focus:-top-6 peer-focus:text-lime peer-focus:text-sm peer-[:not(:placeholder-shown)]:-top-6 peer-[:not(:placeholder-shown)]:text-lime peer-[:not(:placeholder-shown)]:text-sm">
+        CUÉNTAME TU IDEA
+      </label>
+    </div>
+
+    <button 
+      type="submit" 
+      id="submit-btn"
+      class="w-full bg-lime text-deep-black py-5 rounded-xl font-black text-xl hover:bg-white transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-3"
+    >
+      <span id="btn-text">ENVIAR MENSAJE</span>
+      <div id="btn-loader" class="hidden w-6 h-6 border-4 border-deep-black border-t-transparent rounded-full animate-spin"></div>
+    </button>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const btn = document.getElementById('submit-btn');
+  const btnText = document.getElementById('btn-text');
+  const btnLoader = document.getElementById('btn-loader');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    if (btn && btnText && btnLoader) {
+      btn.setAttribute('disabled', 'true');
+      btnText.textContent = 'ENVIANDO...';
+      btnLoader.classList.remove('hidden');
+    }
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert('¡Mensaje enviado con éxito!');
+        form.reset();
+      } else {
+        alert('Error al enviar el mensaje. Inténtalo de nuevo.');
+      }
+    } catch (error) {
+       alert('Ha ocurrido un error inesperado.');
+    } finally {
+      if (btn && btnText && btnLoader) {
+        btn.removeAttribute('disabled');
+        btnText.textContent = 'ENVIAR MENSAJE';
+        btnLoader.classList.add('hidden');
+      }
+    }
+  });
+</script>

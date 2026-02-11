@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout title="Contacto | codev">
+	<Nav />
+	
+	<main class="pt-32 pb-20 px-4 min-h-screen flex flex-col justify-center">
+		<div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+      <div class="space-y-12 contact-info opacity-0 -translate-x-20">
+        <h1 class="text-6xl md:text-9xl font-black tracking-tighter uppercase leading-none">
+          HAGÁMOSLO <br/><span class="text-lime italic">REALIDAD</span>
+        </h1>
+        
+        <p class="text-white/60 text-lg md:text-2xl max-w-md leading-relaxed">
+          ¿Tienes una idea innovadora? Estoy aquí para escucharla y empezar a construir juntos.
+        </p>
+
+        <div class="space-y-8 pt-4">
+          <div class="flex items-center gap-6 group">
+            <div class="w-16 h-16 rounded-full bg-forest/20 flex items-center justify-center text-lime group-hover:bg-lime group-hover:text-deep-black transition-all">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </div>
+            <div>
+              <p class="text-white/40 uppercase tracking-widest text-xs font-bold">Escríbeme</p>
+              <p class="text-2xl font-bold">hola@codev.design</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-6 group">
+            <div class="w-16 h-16 rounded-full bg-forest/20 flex items-center justify-center text-lime group-hover:bg-lime group-hover:text-deep-black transition-all">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            </div>
+            <div>
+              <p class="text-white/40 uppercase tracking-widest text-xs font-bold">Ubicación</p>
+              <p class="text-2xl font-bold">Remoto / 🌍</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-container opacity-0 translate-x-20">
+        <ContactForm />
+      </div>
+    </div>
+	</main>
+
+  <script>
+    import { gsap } from 'gsap';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      gsap.to('.contact-info', {
+        opacity: 1,
+        x: 0,
+        duration: 1.2,
+        ease: 'power4.out'
+      });
+
+      gsap.to('.contact-form-container', {
+        opacity: 1,
+        x: 0,
+        duration: 1.2,
+        delay: 0.2,
+        ease: 'power4.out'
+      });
+    });
+  </script>
+</Layout>

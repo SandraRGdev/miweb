@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Particles from '../components/Particles.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "codev - Portfolio Portfolio Web | Diseñadora & Desarrolladora Frontend" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-deep-black">
+		<Particles />
+		<div id="custom-cursor" class="custom-cursor hidden md:block"></div>
+		<slot />
+		
+		<script>
+			import { gsap } from 'gsap';
+
+			const cursor = document.getElementById('custom-cursor');
+			
+			if (cursor) {
+				window.addEventListener('mousemove', (e) => {
+					gsap.to(cursor, {
+						x: e.clientX - 10,
+						y: e.clientY - 10,
+						duration: 0.1,
+						ease: 'power2.out'
+					});
+				});
+
+				document.querySelectorAll('a, button').forEach(el => {
+					el.addEventListener('mouseenter', () => {
+						gsap.to(cursor, { scale: 2, duration: 0.3 });
+					});
+					el.addEventListener('mouseleave', () => {
+						gsap.to(cursor, { scale: 1, duration: 0.3 });
+					});
+				});
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "lonely-limit",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
+    "@tailwindcss/vite": "^4.1.18",
+    "@tsparticles/engine": "^3.9.1",
+    "@tsparticles/slim": "^3.9.1",
+    "astro": "^5.17.1",
+    "clsx": "^2.1.1",
+    "drizzle-orm": "^0.45.1",
+    "gsap": "^3.14.2",
+    "lucide-astro": "^0.556.0",
+    "shadcn-ui": "^0.9.5",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.18"
+  }
+}

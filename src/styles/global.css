@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest: #14331f;
+  --color-deep-black: #011314;
+  --color-lime: #dffe02;
+
+  --font-heading: "Syne", "abovethebeyond", sans-serif;
+  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 184 92% 4%; /* #011314 approximated to HSL */
+    --foreground: 70 100% 50%; /* #DFFE02 approximated */
+    
+    --primary: 70 100% 50%;
+    --primary-foreground: 184 92% 4%;
+    
+    --secondary: 143 43% 14%; /* #14331F approximated */
+    --secondary-foreground: 70 100% 50%;
+    
+    --radius: 0.5rem;
+  }
+
+  body {
+    @apply bg-deep-black text-white font-body;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading uppercase;
+  }
+}
+
+/* Glassmorphism utility */
+.nav-glassmorphism {
+  background: rgba(20, 51, 31, 0.25);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(223, 254, 2, 0.18);
+  border-radius: 16px;
+}
+
+/* Custom Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-lime);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.1s ease-out;
+}

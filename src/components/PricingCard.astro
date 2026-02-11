@@ -1,0 +1,39 @@
+---
+interface Props {
+  name: string;
+  price: string;
+  billing: string;
+  features: string[];
+  highlighted?: boolean;
+}
+
+const { name, price, billing, features, highlighted = false } = Astro.props;
+---
+
+<div class={`relative p-8 md:p-12 rounded-3xl transition-all duration-500 hover:-translate-y-4 flex flex-col items-center text-center ${highlighted ? 'bg-forest/40 border-2 border-lime shadow-2xl shadow-lime/20 scale-105 z-10' : 'nav-glassmorphism border border-white/10'}`}>
+  {highlighted && (
+    <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-lime text-deep-black px-6 py-1 rounded-full text-xs font-black uppercase tracking-widest">
+      Más Popular
+    </span>
+  )}
+
+  <h3 class="text-2xl md:text-3xl font-black uppercase tracking-tighter mb-4">{name}</h3>
+  
+  <div class="flex items-baseline gap-1 mb-8">
+    <span class="text-4xl md:text-6xl font-black text-lime">{price}€</span>
+    <span class="text-white/40 uppercase text-xs tracking-widest">{billing}</span>
+  </div>
+
+  <ul class="space-y-4 mb-12 flex-grow text-white/70">
+    {features.map(feature => (
+      <li class="flex items-center gap-3 justify-center">
+        <svg class="h-5 w-5 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        <span>{feature}</span>
+      </li>
+    ))}
+  </ul>
+
+  <button class={`w-full py-4 rounded-full font-black text-lg transition-all duration-300 ${highlighted ? 'bg-lime text-deep-black hover:bg-white' : 'bg-white/10 text-white hover:bg-white hover:text-deep-black'}`}>
+    Elegir Plan
+  </button>
+</div>

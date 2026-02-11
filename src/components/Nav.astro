@@ -1,0 +1,48 @@
+---
+const navItems = [
+  { name: 'Inicio', href: '/' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Contacto', href: '/contacto' },
+];
+---
+
+<header class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+  <nav class="nav-glassmorphism px-8 py-4 flex items-center gap-8 md:gap-12">
+    <a href="/" class="text-lime font-heading text-xl font-bold tracking-tighter">codev</a>
+    <ul class="hidden md:flex items-center gap-8">
+      {navItems.map(item => (
+        <li>
+          <a 
+            href={item.href} 
+            class="text-white/80 hover:text-lime transition-colors duration-300 relative group"
+          >
+            {item.name}
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-lime transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <button class="md:hidden text-lime" id="mobile-menu-toggle">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu Overlay (Simplified for now) -->
+  <div id="mobile-menu" class="hidden fixed inset-0 bg-deep-black/95 z-50 flex flex-col items-center justify-center gap-8 text-2xl font-heading">
+     <button class="absolute top-8 right-8 text-lime" id="mobile-menu-close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    {navItems.map(item => (
+      <a href={item.href} class="text-white hover:text-lime transition-colors">{item.name}</a>
+    ))}
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const close = document.getElementById('mobile-menu-close');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => menu?.classList.remove('hidden'));
+  close?.addEventListener('click', () => menu?.classList.add('hidden'));
+</script>
