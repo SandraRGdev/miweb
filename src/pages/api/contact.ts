@@ -8,7 +8,6 @@ export const prerender = false;
 export const POST: APIRoute = async ({ request }) => {
     try {
         const bodyText = await request.text();
-        console.log("Request body text:", bodyText);
 
         if (!bodyText) {
             return new Response(JSON.stringify({ message: "Empty request body" }), { status: 400 });
@@ -39,40 +38,52 @@ export const POST: APIRoute = async ({ request }) => {
         }
 
         // 3. Save to database (optional)
-        try {
-            if (import.meta.env.DATABASE_URL) {
+        const databaseUrl = import.meta.env.DATABASE_URL || (typeof process !== 'undefined' ? process.env.DATABASE_URL : null);
+        if (databaseUrl && databaseUrl.trim() !== "") {
+            try {
                 await db.insert(contactMessages).values({
                     name,
                     email,
-                    projectType,
+                    projectType: projectType || "Not specified",
                     message,
                 });
+            } catch (dbError: any) {
+                console.error("Database error:", dbError.message);
             }
-        } catch (dbError) {
-            console.error("Database error:", dbError);
-            // We continue even if DB fails, as email is more important
         }
 
         // 4. Send Email via Resend
-        const resendKey = import.meta.env.RESEND_API_KEY;
+        const resendKey = import.meta.env.RESEND_API_KEY || (typeof process !== 'undefined' ? process.env.RESEND_API_KEY : null);
+
         if (resendKey) {
-            const resend = new Resend(resendKey);
-            await resend.emails.send({
-                from: 'Contact Form <onboarding@resend.dev>',
-                to: 'sandra.rg85@gmail.com',
-                subject: `Nuevo mensaje de ${name} - Portafolio`,
-                html: `
-                    <h2>Nuevo mensaje de contacto</h2>
-                    <p><strong>Nombre:</strong> ${name}</p>
-                    <p><strong>Email:</strong> ${email}</p>
-                    <p><strong>Empresa:</strong> ${company || 'No especificada'}</p>
-                    <p><strong>Tipo de Proyecto:</strong> ${projectType || 'No especificada'}</p>
-                    <p><strong>Mensaje:</strong></p>
-                    <p>${message}</p>
-                `
-            });
+            try {
+                const resend = new Resend(resendKey);
+                const { error: emailError } = await resend.emails.send({
+                    from: 'Contact Form <onboarding@resend.dev>',
+                    to: 'sandra.rg85@gmail.com',
+                    subject: `Nuevo mensaje de ${name} - Portafolio`,
+                    html: `
+                        <h2>Nuevo mensaje de contacto</h2>
+                        <p><strong>Nombre:</strong> ${name}</p>
+                        <p><strong>Email:</strong> ${email}</p>
+                        <p><strong>Empresa:</strong> ${company || 'No especificada'}</p>
+                        <p><strong>Tipo de Proyecto:</strong> ${projectType || 'No especificada'}</p>
+                        <p><strong>Mensaje:</strong></p>
+                        <p>${message}</p>
+                    `
+                });
+
+                if (emailError) {
+                    console.error("Resend API Error:", emailError);
+                    return new Response(JSON.stringify({ message: "Email delivery failed", error: emailError }), { status: 500 });
+                }
+            } catch (resendException: any) {
+                console.error("Resend exception:", resendException.message);
+                return new Response(JSON.stringify({ message: "Resend exception", error: resendException.message }), { status: 500 });
+            }
         } else {
-            console.warn("RESEND_API_KEY not found. Email not sent.");
+            console.warn("RESEND_API_KEY not found in import.meta.env or process.env");
+            return new Response(JSON.stringify({ message: "Server configuration error: Email key missing" }), { status: 500 });
         }
 
         return new Response(
