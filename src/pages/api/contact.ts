@@ -3,11 +3,22 @@ import { db } from '../../db';
 import { contactMessages } from '../../db/schema';
 import { Resend } from 'resend';
 
+export const prerender = false;
+
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export const POST: APIRoute = async ({ request }) => {
     try {
-        const data = await request.json();
+        const bodyText = await request.text();
+        console.log("Request body text:", bodyText);
+
+        if (!bodyText) {
+            return new Response(JSON.stringify({ message: "Empty request body" }), { status: 400 });
+        }
+
+        const data = JSON.parse(bodyText);
+        console.log("Parsed data:", data);
+
         const { name, email, projectType, message, website, timestamp, company } = data;
 
         // 1. Honeypot check
