@@ -5,6 +5,14 @@
   <div class="absolute -top-24 -right-24 w-48 h-48 bg-lime/10 blur-[60px] rounded-full"></div>
   
   <form id="contact-form" class="space-y-8 relative z-10">
+    <!-- Honeypot field (hidden from users) -->
+    <div class="hidden" aria-hidden="true">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+    
+    <!-- Timestamp field -->
+    <input type="hidden" name="timestamp" id="form-timestamp" />
+
     <div class="group relative">
       <input 
         type="text" 
@@ -75,6 +83,10 @@
   const btn = document.getElementById('submit-btn');
   const btnText = document.getElementById('btn-text');
   const btnLoader = document.getElementById('btn-loader');
+
+  // Set initial timestamp on load
+  const timestampField = document.getElementById('form-timestamp') as HTMLInputElement;
+  if (timestampField) timestampField.value = Date.now().toString();
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();

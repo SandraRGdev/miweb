@@ -32,28 +32,35 @@
         <div class="absolute inset-0 bg-lime/20 blur-[100px] opacity-20 pointer-events-none transform translate-x-12 translate-y-12 rounded-full"></div>
         
         <div class="relative bg-white/[0.02] backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-[2rem] shadow-2xl">
-          <form class="space-y-6">
+          <form id="section-contact-form" class="space-y-6">
+            <!-- Honeypot -->
+            <div class="hidden" aria-hidden="true">
+              <input type="text" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+            <!-- Timestamp -->
+            <input type="hidden" name="timestamp" id="section-form-timestamp" />
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="space-y-2">
                 <label for="name" class="text-white/60 text-sm font-medium ml-1">Nombre *</label>
-                <input type="text" id="name" placeholder="Tu nombre" class="w-full bg-deep-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-lime/50 focus:ring-1 focus:ring-lime/50 transition-all" />
+                <input type="text" id="name" name="name" required placeholder="Tu nombre" class="w-full bg-deep-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-lime/50 focus:ring-1 focus:ring-lime/50 transition-all" />
               </div>
               <div class="space-y-2">
                 <label for="email" class="text-white/60 text-sm font-medium ml-1">Email *</label>
-                <input type="email" id="email" placeholder="tu@email.com" class="w-full bg-deep-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-lime/50 focus:ring-1 focus:ring-lime/50 transition-all" />
+                <input type="email" id="email" name="email" required placeholder="tu@email.com" class="w-full bg-deep-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-lime/50 focus:ring-1 focus:ring-lime/50 transition-all" />
               </div>
             </div>
 
             <div class="space-y-2">
               <label for="company" class="text-white/60 text-sm font-medium ml-1">Empresa</label>
-              <input type="text" id="company" placeholder="Tu empresa" class="w-full bg-deep-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-lime/50 focus:ring-1 focus:ring-lime/50 transition-all" />
+              <input type="text" id="company" name="company" placeholder="Tu empresa" class="w-full bg-deep-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-lime/50 focus:ring-1 focus:ring-lime/50 transition-all" />
             </div>
 
             <div class="space-y-2">
               <label for="service" class="text-white/60 text-sm font-medium ml-1">Servicio de interés</label>
               <div class="relative">
-                <select id="service" class="w-full bg-deep-black/50 border border-white/10 rounded-xl px-4 py-3 text-white/80 focus:outline-none focus:border-lime/50 focus:ring-1 focus:ring-lime/50 transition-all appearance-none">
-                  <option>Selecciona un servicio</option>
+                <select id="service" name="projectType" class="w-full bg-deep-black/50 border border-white/10 rounded-xl px-4 py-3 text-white/80 focus:outline-none focus:border-lime/50 focus:ring-1 focus:ring-lime/50 transition-all appearance-none">
+                  <option value="">Selecciona un servicio</option>
                   <option>Diseño UI/UX</option>
                   <option>Desarrollo Web</option>
                   <option>Estrategia Digital</option>
@@ -67,10 +74,10 @@
 
             <div class="space-y-2">
                <label for="message" class="text-white/60 text-sm font-medium ml-1">Mensaje *</label>
-               <textarea id="message" rows="4" placeholder="Cuéntanos sobre tu proyecto..." class="w-full bg-deep-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-lime/50 focus:ring-1 focus:ring-lime/50 transition-all resize-none"></textarea>
+               <textarea id="message" name="message" required rows="4" placeholder="Cuéntanos sobre tu proyecto..." class="w-full bg-deep-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-lime/50 focus:ring-1 focus:ring-lime/50 transition-all resize-none"></textarea>
             </div>
 
-            <button type="submit" class="w-full bg-[rgba(224,204,250,1)] text-[#1A2820] font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-lime hover:scale-[1.02] transition-all duration-300 shadow-[0_0_20px_rgba(224,204,250,0.3)]">
+            <button type="submit" id="section-submit-btn" class="w-full bg-[rgba(224,204,250,1)] text-[#1A2820] font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-lime hover:scale-[1.02] transition-all duration-300 shadow-[0_0_20px_rgba(224,204,250,0.3)]">
               Enviar Mensaje
             </button>
           </form>
@@ -80,3 +87,48 @@
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('section-contact-form') as HTMLFormElement;
+  const btn = document.getElementById('section-submit-btn');
+  const timestampField = document.getElementById('section-form-timestamp') as HTMLInputElement;
+
+  // Set initial timestamp
+  if (timestampField) timestampField.value = Date.now().toString();
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    if (btn) {
+      btn.setAttribute('disabled', 'true');
+      btn.textContent = 'Enviando...';
+    }
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert('¡Mensaje enviado con éxito!');
+        form.reset();
+        if (timestampField) timestampField.value = Date.now().toString();
+      } else {
+        const result = await response.json();
+        alert(result.message || 'Error al enviar el mensaje.');
+      }
+    } catch (error) {
+       alert('Ha ocurrido un error inesperado.');
+    } finally {
+      if (btn) {
+        btn.removeAttribute('disabled');
+        btn.textContent = 'Enviar Mensaje';
+      }
+    }
+  });
+</script>

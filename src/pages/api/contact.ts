@@ -5,7 +5,18 @@ import { contactMessages } from '../../db/schema';
 export const POST: APIRoute = async ({ request }) => {
     try {
         const data = await request.json();
-        const { name, email, projectType, message } = data;
+        const { name, email, projectType, message, website, timestamp } = data;
+
+        // 1. Honeypot check (website field should be empty)
+        if (website) {
+            return new Response(JSON.stringify({ message: "Bot detected" }), { status: 403 });
+        }
+
+        // 2. Timestamp check (should take at least 2 seconds to fill)
+        const timeTaken = Date.now() - parseInt(timestamp || "0");
+        if (timeTaken < 2000) {
+            return new Response(JSON.stringify({ message: "Too fast! Bot detected" }), { status: 403 });
+        }
 
         if (!name || !email || !message) {
             return new Response(JSON.stringify({ message: "Missing required fields" }), { status: 400 });
