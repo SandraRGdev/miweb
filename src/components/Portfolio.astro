@@ -7,24 +7,6 @@ const projects = [
     category: "Web App / API",
     image: verflix1.src,
     description: "Plataforma de streaming cinematic con integración de TMDB API."
-  },
-  {
-    title: "Neon Pulse",
-    category: "Branding",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800",
-    description: "Identidad visual para startup tecnológica"
-  },
-  {
-    title: "Urban Flow",
-    category: "E-Commerce",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800",
-    description: "Tienda online de ropa urbana minimalista"
-  },
-  {
-    title: "Zenith Bank",
-    category: "Fintech",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800",
-    description: "Banca digital de próxima generación"
   }
 ];
 ---
@@ -53,7 +35,8 @@ const projects = [
     </div>
 
     <!-- Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="flex justify-center">
+      <div class="w-full max-w-sm">
       {projects.map((project) => (
         <a 
           href={project.title === 'VerFlix' ? '/portfolio/verflix' : '#'} 
@@ -85,6 +68,7 @@ const projects = [
           </div>
         </a>
       ))}
+      </div>
     </div>
 
     <!-- View All Button -->
