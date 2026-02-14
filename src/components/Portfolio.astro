@@ -1,10 +1,12 @@
 ---
+import verflix1 from '../img/verflix1.webp';
+
 const projects = [
   {
-    title: "EcoFuture",
-    category: "Web App",
-    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800",
-    description: "Plataforma de gestión ambiental inteligente"
+    title: "VerFlix",
+    category: "Web App / API",
+    image: verflix1.src,
+    description: "Plataforma de streaming cinematic con integración de TMDB API."
   },
   {
     title: "Neon Pulse",
@@ -27,7 +29,7 @@ const projects = [
 ];
 ---
 
-<section id="portfolio-section" class="py-24 bg-[#031605] relative">
+<section id="portfolio-section" class="py-16 md:py-32 bg-[#031605] relative">
   <!-- Subtle gradient -->
   <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0F1812]/20 pointer-events-none"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-6">
@@ -53,7 +55,10 @@ const projects = [
     <!-- Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {projects.map((project) => (
-        <div class="group relative aspect-[3/4] rounded-[24px] overflow-hidden cursor-pointer">
+        <a 
+          href={project.title === 'VerFlix' ? '/portfolio/verflix' : '#'} 
+          class="group relative aspect-[3/4] rounded-[24px] overflow-hidden cursor-pointer block"
+        >
           <!-- Image -->
           <img 
             src={project.image} 
@@ -78,7 +83,7 @@ const projects = [
               </div>
             </div>
           </div>
-        </div>
+        </a>
       ))}
     </div>
 
