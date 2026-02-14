@@ -2,38 +2,31 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-
-const categories = ['Todos', 'Web Design', 'Development', 'Branding', 'UI/UX'];
+import verflix1 from '../img/verflix1.webp';
 
 const projects = [
-  { title: 'Cyber Marketplace', category: 'Development', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop', slug: 'cyber-marketplace', large: true },
-  { title: 'Abstract Branding', category: 'Branding', image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2000&auto=format&fit=crop', slug: 'abstract-branding' },
-  { title: 'Minimalist App', category: 'UI/UX', image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1974&auto=format&fit=crop', slug: 'minimalist-app' },
-  { title: 'Eco Landing', category: 'Web Design', image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop', slug: 'eco-landing' },
-  { title: 'Neon Dashboard', category: 'Development', image: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1974&auto=format&fit=crop', slug: 'neon-dashboard' },
-  { title: 'Future UI Kit', category: 'UI/UX', image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=2080&auto=format&fit=crop', slug: 'future-ui-kit' },
+  { 
+    title: 'VerFlix', 
+    category: 'Web App / API', 
+    image: verflix1.src, 
+    slug: 'verflix', 
+    large: true 
+  }
 ];
 ---
 
 <Layout title="Portfolio | codev">
 	<Nav />
 	
-	<main class="pt-32 pb-20 px-4">
-		<header class="max-w-6xl mx-auto mb-16 space-y-8">
-			<h1 class="text-6xl md:text-9xl font-black tracking-tighter uppercase leading-none portfolio-header opacity-0 translate-y-20">
-				EXPLORA MI <br/><span class="text-lime italic">TRABAJO</span>
+	<main class="pt-40 pb-20 px-4 bg-[#031605] min-h-screen">
+		<header class="max-w-6xl mx-auto mb-20">
+			<h1 class="text-6xl md:text-9xl font-light tracking-tighter uppercase leading-none portfolio-header opacity-0 translate-y-20">
+				EXPLORA MI <br/><span class="text-[rgba(224,204,250,1)] italic font-light">TRABAJO</span>
 			</h1>
-			
-			<div class="flex flex-wrap gap-4 pt-4 portfolio-header opacity-0 translate-y-20">
-				{categories.map(cat => (
-					<button class={`px-8 py-3 rounded-full border border-white/10 font-bold transition-all hover:border-lime hover:text-lime ${cat === 'Todos' ? 'bg-white text-deep-black border-white' : 'text-white/60'}`}>
-						{cat}
-					</button>
-				))}
-			</div>
+      <p class="text-lime font-bold uppercase tracking-widest text-sm mt-8 portfolio-header opacity-0 translate-y-20">Proyectos Destacados / 2026</p>
 		</header>
 
-		<section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px]">
+		<section class="max-w-4xl mx-auto">
 			{projects.map((project, index) => (
 				<div class="portfolio-item opacity-0 translate-y-20">
           <ProjectCard {...project} />

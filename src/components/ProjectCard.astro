@@ -12,24 +12,27 @@ const { title, category, image, slug, large = false } = Astro.props;
 
 <a 
   href={`/portfolio/${slug}`}
-  class={`group relative block overflow-hidden rounded-3xl bg-forest/20 transition-all duration-700 hover:shadow-2xl hover:shadow-lime/10 ${large ? 'md:col-span-2 md:row-span-2' : ''}`}
+  class={`group relative block overflow-hidden rounded-[2.5rem] bg-white/5 border border-white/10 transition-all duration-700 hover:border-lime/30 ${large ? 'min-h-[500px]' : 'min-h-[400px]'}`}
 >
-  <div class="aspect-[4/3] w-full overflow-hidden">
+  <div class="absolute inset-0 w-full h-full overflow-hidden">
     <img 
       src={image} 
       alt={title} 
-      class="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0"
+      class="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
     />
   </div>
   
-  <div class="absolute inset-0 bg-gradient-to-t from-deep-black via-transparent to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-90"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-[#031605] via-[#031605]/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-90"></div>
   
-  <div class="absolute bottom-0 left-0 p-8 w-full translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
-    <span class="text-lime font-bold uppercase tracking-widest text-xs mb-2 block">{category}</span>
-    <h3 class="text-2xl md:text-3xl font-black text-white leading-tight">{title}</h3>
+  <div class="absolute bottom-0 left-0 p-10 w-full translate-y-4 transition-transform duration-500 group-hover:translate-y-0 text-left">
+    <span class="text-lime text-xs font-bold uppercase tracking-[0.2em] mb-3 block">{category}</span>
+    <h3 class="text-4xl md:text-5xl font-light text-white leading-none uppercase tracking-tighter">
+        {title.split(' ')[0]} <br/>
+        <span class="text-[rgba(224,204,250,1)] italic">{title.split(' ').slice(1).join(' ')}</span>
+    </h3>
     
-    <div class="mt-4 flex items-center gap-2 text-white/60 font-bold opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-      <span>Ver Proyecto</span>
+    <div class="mt-8 flex items-center gap-2 text-lime font-bold text-xs uppercase tracking-widest opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:gap-4">
+      <span>Explorar Proyecto</span>
       <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
     </div>
   </div>
