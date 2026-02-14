@@ -5,8 +5,6 @@ import { Resend } from 'resend';
 
 export const prerender = false;
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
-
 export const POST: APIRoute = async ({ request }) => {
     try {
         const bodyText = await request.text();
@@ -16,8 +14,12 @@ export const POST: APIRoute = async ({ request }) => {
             return new Response(JSON.stringify({ message: "Empty request body" }), { status: 400 });
         }
 
-        const data = JSON.parse(bodyText);
-        console.log("Parsed data:", data);
+        let data;
+        try {
+            data = JSON.parse(bodyText);
+        } catch (e: any) {
+            return new Response(JSON.stringify({ message: "Invalid JSON", error: e.message }), { status: 400 });
+        }
 
         const { name, email, projectType, message, website, timestamp, company } = data;
 
@@ -37,17 +39,24 @@ export const POST: APIRoute = async ({ request }) => {
         }
 
         // 3. Save to database (optional)
-        if (import.meta.env.DATABASE_URL) {
-            await db.insert(contactMessages).values({
-                name,
-                email,
-                projectType,
-                message,
-            });
+        try {
+            if (import.meta.env.DATABASE_URL) {
+                await db.insert(contactMessages).values({
+                    name,
+                    email,
+                    projectType,
+                    message,
+                });
+            }
+        } catch (dbError) {
+            console.error("Database error:", dbError);
+            // We continue even if DB fails, as email is more important
         }
 
         // 4. Send Email via Resend
-        if (import.meta.env.RESEND_API_KEY) {
+        const resendKey = import.meta.env.RESEND_API_KEY;
+        if (resendKey) {
+            const resend = new Resend(resendKey);
             await resend.emails.send({
                 from: 'Contact Form <onboarding@resend.dev>',
                 to: 'sandra.rg85@gmail.com',
@@ -57,7 +66,7 @@ export const POST: APIRoute = async ({ request }) => {
                     <p><strong>Nombre:</strong> ${name}</p>
                     <p><strong>Email:</strong> ${email}</p>
                     <p><strong>Empresa:</strong> ${company || 'No especificada'}</p>
-                    <p><strong>Tipo de Proyecto:</strong> ${projectType || 'No especificado'}</p>
+                    <p><strong>Tipo de Proyecto:</strong> ${projectType || 'No especificada'}</p>
                     <p><strong>Mensaje:</strong></p>
                     <p>${message}</p>
                 `
@@ -70,10 +79,14 @@ export const POST: APIRoute = async ({ request }) => {
             JSON.stringify({ message: "Success" }),
             { status: 200 }
         );
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        console.error("Global API Error:", error);
         return new Response(
-            JSON.stringify({ message: "Internal Server Error" }),
+            JSON.stringify({
+                message: "Internal Server Error",
+                error: error.message,
+                stack: error.stack
+            }),
             { status: 500 }
         );
     }
