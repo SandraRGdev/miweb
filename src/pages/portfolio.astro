@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import verflix1 from '../img/verflix1.webp';
+import imgpro from '../img/imgpro.webp';
+import elementor from '../img/elementor.webp';
 
 const projects = [
   { 
@@ -11,6 +13,20 @@ const projects = [
     image: verflix1.src, 
     slug: 'verflix', 
     large: true 
+  },
+  { 
+    title: 'ImgPros', 
+    category: 'Web Tool / React', 
+    image: imgpro.src, 
+    slug: 'imgpros', 
+    large: false 
+  },
+  { 
+    title: 'ElementorIA', 
+    category: 'Workflow Tool', 
+    image: elementor.src, 
+    slug: 'elementoria', 
+    large: false 
   }
 ];
 ---
@@ -26,7 +42,7 @@ const projects = [
       <p class="text-lime font-bold uppercase tracking-widest text-sm mt-8 portfolio-header opacity-0 translate-y-20">Proyectos Destacados / 2026</p>
 		</header>
 
-		<section class="max-w-4xl mx-auto">
+		<section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 			{projects.map((project, index) => (
 				<div class="portfolio-item opacity-0 translate-y-20">
           <ProjectCard {...project} />

@@ -1,24 +1,25 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import verflix1 from '../../img/verflix1.webp';
+import elementor from '../../img/elementor.webp';
 
 const techStack = [
-  { name: "Astro", icon: "rocket" },
-  { name: "React", icon: "code" },
-  { name: "Tailwind CSS", icon: "color" },
-  { name: "TMDB API", icon: "database" }
+  { name: "JavaScript", icon: "code" },
+  { name: "PHP", icon: "database" },
+  { name: "Elementor API", icon: "rocket" },
+  { name: "WordPress", icon: "color" }
 ];
 
 const features = [
-  "Catálogo interactivo con carruseles dinámicos.",
-  "Buscador en tiempo real para películas y series.",
-  "Información detallada: sinopsis, valoraciones y fechas.",
-  "Sección 'Mi Lista' personalizada para usuarios.",
-  "Interfaz Cinema-Night con diseño Premium."
+  "Cambio de viewport instantáneo en el editor.",
+  "Modo horizontal para tablets y móviles.",
+  "Previsualización sin publicar ni refrescar.",
+  "Rango de resolución seleccionable.",
+  "Optimización del flujo de maquetación.",
+  "Integración nativa con la interfaz de Elementor."
 ];
 ---
 
-<Layout title="VerFlix - Streaming Experience | Portfolio">
+<Layout title="Elementor IA Tool - Workflow Extension | Portfolio">
   <main class="bg-[#031605] min-h-screen pt-32 pb-24">
     <div class="max-w-7xl mx-auto px-6">
       
@@ -33,18 +34,17 @@ const features = [
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
           <div>
-            <span class="text-[rgba(224,204,250,1)] text-lg italic block mb-2">Streaming Platform Clone</span>
+            <span class="text-[rgba(224,204,250,1)] text-lg italic block mb-2">Elementor Workflow Extension</span>
             <h1 class="text-lime text-6xl md:text-8xl font-light uppercase leading-none tracking-tighter">
-              VerFlix
+              ElementorIA
             </h1>
           </div>
           <div class="flex flex-col gap-4">
              <p class="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-xl">
-               Una experiencia cinematográfica diseñada para replicar la fluidez y el estilo visual de las plataformas de streaming líderes.
+               Una extensión diseñada para revolucionar la maquetación en Elementor, permitiendo adaptar y previsualizar resoluciones en tiempo real.
              </p>
              <div class="flex gap-4">
-                <a href="https://verflix.codev.cloud/" target="_blank" class="px-8 py-3 rounded-full bg-lime text-[#031605] font-bold text-sm uppercase tracking-wider hover:scale-105 transition-transform">Ver Sitio En Vivo</a>
-                <a href="#" class="px-8 py-3 rounded-full border border-white/20 text-white font-bold text-sm uppercase tracking-wider hover:bg-white/5 transition-colors">GitHub Repo</a>
+                <a href="https://github.com/SandraRGdev/ExtensionesIA" target="_blank" class="px-8 py-3 rounded-full bg-lime text-[#031605] font-bold text-sm uppercase tracking-wider hover:scale-105 transition-transform">Ver en GitHub</a>
              </div>
           </div>
         </div>
@@ -53,8 +53,8 @@ const features = [
       <!-- Main Image -->
       <div class="relative aspect-video rounded-[2.5rem] overflow-hidden border border-white/10 mb-24 group">
         <img 
-          src={verflix1.src} 
-          alt="VerFlix Interface" 
+          src={elementor.src} 
+          alt="ElementorIA Interface" 
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
         />
         <div class="absolute inset-0 bg-gradient-to-t from-[#031605] via-transparent to-transparent opacity-60"></div>
@@ -68,13 +68,13 @@ const features = [
           <div>
             <h2 class="text-white text-3xl font-bold mb-6">El Proyecto</h2>
             <p class="text-white/70 text-lg font-light leading-relaxed">
-              VerFlix nació como un desafío técnico para demostrar la capacidad de construir aplicaciones web complejas, altamente reactivas y con una estética premium. El objetivo era no solo imitar la interfaz de Netflix, sino optimizar el rendimiento y la carga de datos utilizando tecnologías modernas.
+              Esta extensión para Elementor nace de la frustración de tener que publicar o cambiar de vista constantemente para comprobar la responsividad real. Con ElementorIA, los desarrolladores y diseñadores pueden forzar rangos de pantalla específicos, incluyendo vistas horizontales en dispositivos móviles, todo sin perder el foco del editor ni refrescar la página.
             </p>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
              <div class="p-8 rounded-3xl bg-white/[0.03] border border-white/10">
-                <h3 class="text-lime text-xl font-bold mb-4 uppercase">Funcionalidades Clave</h3>
+                <h3 class="text-lime text-xl font-bold mb-4 uppercase">Funcionalidades</h3>
                 <ul class="space-y-4">
                   {features.map(f => (
                     <li class="flex items-start gap-3 text-white/60 text-sm">
@@ -85,13 +85,13 @@ const features = [
                 </ul>
              </div>
              <div class="p-8 rounded-3xl bg-[rgba(224,204,250,0.05)] border border-[rgba(224,204,250,0.1)]">
-                <h3 class="text-[rgba(224,204,250,1)] text-xl font-bold mb-4 uppercase">Desafío Técnico</h3>
+                <h3 class="text-[rgba(224,204,250,1)] text-xl font-bold mb-4 uppercase">Resultado</h3>
                 <p class="text-white/60 text-sm leading-relaxed mb-4">
-                  Integrar la API de TMDB de forma eficiente, manejando grandes volúmenes de datos y estados de carga fluidos. Se priorizó la optimización de imágenes y el renderizado híbrido para una velocidad de navegación instantánea.
+                  Reduce el tiempo de maquetación en un 30% al eliminar pasos intermedios de verificación. Ideal para proyectos con un alto nivel de detalle en diseño responsive y móvil.
                 </p>
                 <div class="w-full h-px bg-white/10 my-4"></div>
                 <p class="text-white/40 text-xs italic">
-                  * Proyecto desarrollado con enfoque en UX/UI Cinema-Night.
+                  * Herramienta avanzada para maquetadores profesionales.
                 </p>
              </div>
           </div>
@@ -123,10 +123,10 @@ const features = [
              <h4 class="text-lime text-xs font-bold uppercase tracking-widest mb-4">Estado del proyecto</h4>
              <div class="flex items-center gap-3">
                 <div class="relative w-3 h-3">
-                   <div class="absolute inset-0 bg-lime rounded-full animate-ping opacity-25"></div>
-                   <div class="w-full h-full bg-lime rounded-full"></div>
+                   <div class="absolute inset-0 bg-white rounded-full animate-ping opacity-25"></div>
+                   <div class="w-full h-full bg-white rounded-full"></div>
                 </div>
-                <span class="text-white font-bold text-sm uppercase">Producción / Activo</span>
+                <span class="text-white font-bold text-sm uppercase">Open Source</span>
              </div>
           </div>
         </div>

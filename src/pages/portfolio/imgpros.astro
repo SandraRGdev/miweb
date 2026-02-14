@@ -1,24 +1,25 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import verflix1 from '../../img/verflix1.webp';
+import imgpro from '../../img/imgpro.webp';
 
 const techStack = [
-  { name: "Astro", icon: "rocket" },
   { name: "React", icon: "code" },
   { name: "Tailwind CSS", icon: "color" },
-  { name: "TMDB API", icon: "database" }
+  { name: "Canvas API", icon: "rocket" },
+  { name: "Netlify", icon: "database" }
 ];
 
 const features = [
-  "Catálogo interactivo con carruseles dinámicos.",
-  "Buscador en tiempo real para películas y series.",
-  "Información detallada: sinopsis, valoraciones y fechas.",
-  "Sección 'Mi Lista' personalizada para usuarios.",
-  "Interfaz Cinema-Night con diseño Premium."
+  "Conversión multiformato instantánea.",
+  "Optimización de peso y calidad ajustable.",
+  "Recorte inteligente con modo 'cover'.",
+  "Procesamiento por lotes (múltiples imágenes).",
+  "Numeración automática de archivos procesados.",
+  "Interfaz minimalista y drag-and-drop."
 ];
 ---
 
-<Layout title="VerFlix - Streaming Experience | Portfolio">
+<Layout title="ImgPros - Image Editor Pro | Portfolio">
   <main class="bg-[#031605] min-h-screen pt-32 pb-24">
     <div class="max-w-7xl mx-auto px-6">
       
@@ -33,17 +34,17 @@ const features = [
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
           <div>
-            <span class="text-[rgba(224,204,250,1)] text-lg italic block mb-2">Streaming Platform Clone</span>
+            <span class="text-[rgba(224,204,250,1)] text-lg italic block mb-2">Image Optimization Tool</span>
             <h1 class="text-lime text-6xl md:text-8xl font-light uppercase leading-none tracking-tighter">
-              VerFlix
+              ImgPros
             </h1>
           </div>
           <div class="flex flex-col gap-4">
              <p class="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-xl">
-               Una experiencia cinematográfica diseñada para replicar la fluidez y el estilo visual de las plataformas de streaming líderes.
+               Una herramienta potente y sencilla para editar, optimizar y convertir imágenes masivamente sin perder calidad.
              </p>
              <div class="flex gap-4">
-                <a href="https://verflix.codev.cloud/" target="_blank" class="px-8 py-3 rounded-full bg-lime text-[#031605] font-bold text-sm uppercase tracking-wider hover:scale-105 transition-transform">Ver Sitio En Vivo</a>
+                <a href="https://imgpros.netlify.app/" target="_blank" class="px-8 py-3 rounded-full bg-lime text-[#031605] font-bold text-sm uppercase tracking-wider hover:scale-105 transition-transform">Probar App</a>
                 <a href="#" class="px-8 py-3 rounded-full border border-white/20 text-white font-bold text-sm uppercase tracking-wider hover:bg-white/5 transition-colors">GitHub Repo</a>
              </div>
           </div>
@@ -53,8 +54,8 @@ const features = [
       <!-- Main Image -->
       <div class="relative aspect-video rounded-[2.5rem] overflow-hidden border border-white/10 mb-24 group">
         <img 
-          src={verflix1.src} 
-          alt="VerFlix Interface" 
+          src={imgpro.src} 
+          alt="ImgPros Interface" 
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
         />
         <div class="absolute inset-0 bg-gradient-to-t from-[#031605] via-transparent to-transparent opacity-60"></div>
@@ -68,13 +69,13 @@ const features = [
           <div>
             <h2 class="text-white text-3xl font-bold mb-6">El Proyecto</h2>
             <p class="text-white/70 text-lg font-light leading-relaxed">
-              VerFlix nació como un desafío técnico para demostrar la capacidad de construir aplicaciones web complejas, altamente reactivas y con una estética premium. El objetivo era no solo imitar la interfaz de Netflix, sino optimizar el rendimiento y la carga de datos utilizando tecnologías modernas.
+              ImgPros fue desarrollado para solucionar la necesidad de optimizar imágenes para la web de forma rápida y eficiente. A diferencia de editores pesados, ImgPros se centra en la velocidad de ejecución y la simplicidad del flujo de trabajo, permitiendo procesar decenas de fotos en segundos directamente desde el navegador.
             </p>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
              <div class="p-8 rounded-3xl bg-white/[0.03] border border-white/10">
-                <h3 class="text-lime text-xl font-bold mb-4 uppercase">Funcionalidades Clave</h3>
+                <h3 class="text-lime text-xl font-bold mb-4 uppercase">Funcionalidades</h3>
                 <ul class="space-y-4">
                   {features.map(f => (
                     <li class="flex items-start gap-3 text-white/60 text-sm">
@@ -85,13 +86,13 @@ const features = [
                 </ul>
              </div>
              <div class="p-8 rounded-3xl bg-[rgba(224,204,250,0.05)] border border-[rgba(224,204,250,0.1)]">
-                <h3 class="text-[rgba(224,204,250,1)] text-xl font-bold mb-4 uppercase">Desafío Técnico</h3>
+                <h3 class="text-[rgba(224,204,250,1)] text-xl font-bold mb-4 uppercase">Rendimiento</h3>
                 <p class="text-white/60 text-sm leading-relaxed mb-4">
-                  Integrar la API de TMDB de forma eficiente, manejando grandes volúmenes de datos y estados de carga fluidos. Se priorizó la optimización de imágenes y el renderizado híbrido para una velocidad de navegación instantánea.
+                  Utiliza scripts de alto rendimiento para el procesamiento de imágenes en el lado del cliente, garantizando que tus fotos nunca abandonen tu dispositivo, lo que asegura privacidad y velocidad total.
                 </p>
                 <div class="w-full h-px bg-white/10 my-4"></div>
                 <p class="text-white/40 text-xs italic">
-                  * Proyecto desarrollado con enfoque en UX/UI Cinema-Night.
+                  * Herramienta esencial para creadores de contenido y desarrolladores.
                 </p>
              </div>
           </div>
