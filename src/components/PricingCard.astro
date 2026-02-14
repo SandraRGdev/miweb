@@ -33,7 +33,7 @@ const { name, price, billing, features, highlighted = false } = Astro.props;
     ))}
   </ul>
 
-  <button class={`w-full py-4 rounded-full font-black text-lg transition-all duration-300 ${highlighted ? 'bg-lime text-deep-black hover:bg-white' : 'bg-white/10 text-white hover:bg-white hover:text-deep-black'}`}>
+  <button class={`w-full py-4 rounded-full font-black text-lg transition-all duration-300 ${highlighted ? 'bg-[rgba(224,204,250,1)] text-deep-black hover:bg-lime' : 'bg-white/10 text-white hover:bg-[rgba(224,204,250,1)] hover:text-deep-black'}`}>
     Elegir Plan
   </button>
 </div>

@@ -1,0 +1,123 @@
+---
+---
+
+<footer class="bg-[#031605] pt-20 pb-10 border-t border-lime/10 relative overflow-hidden">
+  <!-- Subtle gradient -->
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0F1812]/20 pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Top Section: CTA + Large Text -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-12">
+      
+      <!-- Brand / Large Title with Animation -->
+      <div class="w-full md:w-2/3 overflow-hidden">
+        <div class="animated-text-container">
+          <h2 class="text-[clamp(3rem,12vw,15rem)] font-light leading-[0.85] tracking-tight uppercase select-none whitespace-nowrap">
+            <span class="text-stroke-animated text-[rgba(224,204,250,1)]">CODEV</span>
+            <span class="text-stroke-animated text-[rgba(224,204,250,1)] ml-12">CODEV</span>
+            <span class="text-stroke-animated text-[rgba(224,204,250,1)] ml-12">CODEV</span>
+            <span class="text-stroke-animated text-[rgba(224,204,250,1)] ml-12">CODEV</span>
+          </h2>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="w-full md:w-1/3 flex justify-start md:justify-end">
+        <a href="#contact-section" class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-[rgba(224,204,250,1)] px-8 font-medium text-neutral-950 transition-all duration-300 hover:bg-lime hover:scale-105 active:scale-95">
+          <span class="mr-2">Iniciar Proyecto</span>
+          <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="w-full h-px bg-white/10 mb-12"></div>
+
+    <!-- Bottom Section: Links & Copyright -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+      
+      <!-- Brand Column -->
+      <div class="col-span-1 md:col-span-1">
+        <span class="text-2xl font-black text-[#F0EBE3] tracking-tighter flex items-center gap-2">
+          codev<span class="text-lime">.</span>
+        </span>
+        <p class="mt-4 text-[#F0EBE3]/40 text-sm leading-relaxed max-w-xs">
+          Elevando el estándar de la web moderna. Creamos experiencias digitales únicas.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="col-span-1">
+        <h4 class="text-sm font-bold text-[#F0EBE3] uppercase tracking-wider mb-6">Navegación</h4>
+        <ul class="space-y-4">
+          <li><a href="/portfolio" class="text-white/60 hover:text-lime transition-colors text-sm">Portafolio</a></li>
+          <li><a href="/contacto" class="text-white/60 hover:text-lime transition-colors text-sm">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Socials -->
+      <div class="col-span-1">
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-6">Social</h4>
+        <ul class="space-y-4">
+          <li><a href="#" class="text-white/60 hover:text-lime transition-colors text-sm flex items-center gap-2">LinkedIn ↗</a></li>
+          <li><a href="#" class="text-white/60 hover:text-lime transition-colors text-sm flex items-center gap-2">GitHub ↗</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="col-span-1">
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-6">Legal</h4>
+        <ul class="space-y-4">
+          <li><a href="#" class="text-white/60 hover:text-lime transition-colors text-sm">Privacidad</a></li>
+          <li><a href="#" class="text-white/60 hover:text-lime transition-colors text-sm">Términos</a></li>
+          <li><a href="mailto:hola@codev.com" class="text-lime hover:text-white transition-colors text-sm mt-4 block">hola@codev.com</a></li>
+        </ul>
+      </div>
+
+    </div>
+    
+    <!-- Copyright -->
+    <div class="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-center md:justify-between items-center text-xs text-white/20">
+      <p>&copy; 2026 Codev Portfolio. Todos los derechos reservados.</p>
+      <p class="mt-2 md:mt-0">Diseñado y desarrollado con ♥</p>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  /* Animated stroke text effect */
+  .text-stroke-animated {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(224, 204, 250, 1);
+    text-stroke: 1.5px rgba(224, 204, 250, 1);
+    display: inline-block;
+  }
+
+  .animated-text-container {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .animated-text-container h2 {
+    display: inline-block;
+    animation: scroll-text 20s linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes scroll-text {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Pause animation on hover */
+  .animated-text-container:hover h2 {
+    animation-play-state: paused;
+  }
+</style>

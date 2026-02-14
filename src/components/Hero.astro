@@ -1,49 +1,89 @@
 ---
 ---
 
-<section class="h-screen flex flex-col items-center justify-center relative overflow-hidden bg-deep-black">
-  <div class="relative w-full max-w-[1800px] h-full flex flex-col items-center justify-center pt-20 md:pt-32">
+<section id="hero" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#1A2820] to-[#031605]">
+  <!-- Subtle Gradient Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-[#0F1812]/30 via-transparent to-[#1A2820]/30 pointer-events-none"></div>
+  
+  <!-- Structural Background: Vertical, Horizontal & Diagonal (Diamonds) -->
+  <div class="absolute inset-0 pointer-events-none opacity-20">
+    <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <!-- Vertical Lines -->
+      <line x1="25%" y1="0" x2="25%" y2="100%" stroke="#DAFC69" stroke-width="0.5" opacity="0.3"/>
+      <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#E8E4DC" stroke-width="0.5" opacity="0.1"/>
+      <line x1="75%" y1="0" x2="75%" y2="100%" stroke="#DAFC69" stroke-width="0.5" opacity="0.3"/>
+      
+      <!-- Horizontal Lines -->
+      <line x1="0" y1="33%" x2="100%" y2="33%" stroke="#E8E4DC" stroke-width="0.5" opacity="0.1"/>
+      <line x1="0" y1="66%" x2="100%" y2="66%" stroke="#DAFC69" stroke-width="0.5" opacity="0.2"/>
+      
+      <!-- Diagonal Lines (Rhombus Effect) -->
+      <!-- Top-Left to Bottom-Right -->
+      <line x1="0" y1="0" x2="100%" y2="100%" stroke="#DAFC69" stroke-width="0.5" opacity="0.2"/>
+      <line x1="50%" y1="0" x2="100%" y2="50%" stroke="#E8E4DC" stroke-width="0.5" opacity="0.1"/>
+      <line x1="0" y1="50%" x2="50%" y2="100%" stroke="#E8E4DC" stroke-width="0.5" opacity="0.1"/>
+      
+      <!-- Top-Right to Bottom-Left -->
+      <line x1="100%" y1="0" x2="0" y2="100%" stroke="#DAFC69" stroke-width="0.5" opacity="0.2"/>
+      <line x1="50%" y1="0" x2="0" y2="50%" stroke="#E8E4DC" stroke-width="0.5" opacity="0.1"/>
+      <line x1="100%" y1="50%" x2="50%" y2="100%" stroke="#E8E4DC" stroke-width="0.5" opacity="0.1"/>
+    </svg>
+  </div>
+  
+  <!-- Content -->
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center text-center pt-20">
     
-    <!-- Background Content (Behind Image) -->
-    <div class="absolute inset-x-0 top-[62%] -translate-y-1/2 flex flex-col items-center justify-center z-0 select-none pointer-events-none">
-      <h1 class="!font-['League_Gothic'] text-[22vw] md:text-[18vw] leading-[0.8] text-[#E0D4C5] !tracking-tighter text-center uppercase opacity-0 hero-text-back translate-y-20">
-        DISEÑADORA<br/>WEB
-      </h1>
-    </div>
 
-    <!-- Image (Sandwich Middle) -->
-    <div class="relative z-10 w-full h-full flex items-end justify-center pb-0">
-      <div class="relative h-[75vh] md:h-[85vh] w-auto">
-        <img 
-          src="/sandra.png" 
-          alt="Diseñadora Web" 
-          class="h-full w-auto object-cover object-top opacity-0 hero-img translate-y-20"
-        />
-        <!-- Bottom Fade Gradient -->
-        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-deep-black to-transparent z-10"></div>
-      </div>
-    </div>
+    <!-- Main Headline -->
+    <h1 class="text-lime text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] tracking-tight mb-8 max-w-5xl animate-fade-in-up delay-100 uppercase">
+      Creamos experiencias <br />
+      <span class="text-[rgba(224,204,250,1)] italic font-light">digitales que inspiran</span>
+    </h1>
 
-    <!-- Foreground Content (In Front of Image) -->
-    <div class="absolute inset-x-0 top-[62%] -translate-y-1/2 flex flex-col items-center justify-center z-20 pointer-events-none">
-      <h1 class="!font-['League_Gothic'] text-[22vw] md:text-[18vw] leading-[0.8] text-transparent !tracking-tighter text-center uppercase opacity-0 hero-text-front translate-y-20"
-          style="-webkit-text-stroke: 1.5px #E0D4C5; text-stroke: 1.5px #E0D4C5;"
-      >
-        DISEÑADORA<br/>WEB
-      </h1>
+    <!-- Subheadline -->
+    <p class="text-lg md:text-xl text-[#E8E4DC]/60 font-light max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up delay-200">
+      Transformamos ideas en sitios web impactantes que conectan con tu audiencia y llevan tu marca al siguiente nivel.
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up delay-300">
+      <a href="#contact-section" class="px-8 py-4 bg-[rgba(224,204,250,1)] hover:bg-lime text-[#1A2820] font-medium rounded-full transition-all hover:scale-105 shadow-[0_0_30px_rgba(224,204,250,0.3)]">
+        Iniciar proyecto →
+      </a>
+      <a href="#portfolio-section" class="px-8 py-4 bg-transparent border border-[#E8E4DC]/20 hover:bg-[#E8E4DC]/5 text-[#E8E4DC] font-light rounded-full transition-all hover:border-[#E8E4DC]/40">
+        Ver portafolio
+      </a>
     </div>
+  </div>
+
+  <!-- Background Elements -->
+  <div class="absolute inset-0 pointer-events-none">
+    <!-- Glows -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#8B5CF6]/20 rounded-full blur-[120px]"></div>
+    <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-lime/10 rounded-full blur-[100px]"></div>
     
+    <!-- Animated Particles -->
+    <div class="particles absolute inset-0">
+       <!-- CSS Particles can be added here or via JS -->
+    </div>
   </div>
 </section>
 
-<script>
-  import { gsap } from 'gsap';
+<style>
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.5 } });
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
 
-    tl.to('.hero-text-back', { opacity: 1, y: 0 })
-      .to('.hero-img', { opacity: 1, y: 0 }, '-=1.2')
-      .to('.hero-text-front', { opacity: 1, y: 0 }, '<');
-  });
-</script>
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

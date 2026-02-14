@@ -1,0 +1,63 @@
+---
+const services = [
+  {
+    title: "Diseño UI/UX",
+    description: "Creamos interfaces intuitivas y experiencias de usuario memorables que conectan con tu audiencia y elevan tu marca.",
+    icon: "palette"
+  },
+  {
+    title: "Desarrollo Web",
+    description: "Construimos sitios web rápidos, responsivos y escalables utilizando las últimas tecnologías como Astro, React y Tailwind.",
+    icon: "code"
+  },
+  {
+    title: "Optimización SEO",
+    description: "Mejoramos la visibilidad de tu sitio en los motores de búsqueda para atraer tráfico orgánico y clientes potenciales.",
+    icon: "search"
+  }
+];
+---
+
+<section id="services-section" class="py-32 bg-[#031605] relative">
+  <!-- Subtle gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-[#0F1812]/20 to-transparent pointer-events-none"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="mb-20">
+      <span class="text-lime text-sm font-bold tracking-[0.2em] uppercase block mb-4">Nuestros Servicios</span>
+      <h2 class="text-lime text-5xl md:text-7xl font-light uppercase tracking-tight">
+        Lo que <span class="text-[rgba(224,204,250,1)] italic font-light">hacemos.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {services.map((service, index) => (
+        <div class="service-card group relative bg-[#E8E4DC]/5 border border-[#E8E4DC]/10 rounded-[2rem] p-10 transition-all duration-300 hover:-translate-y-2 hover:border-lime/50 hover:shadow-[0_0_30px_-10px_rgba(218,252,105,0.2)]">
+          <!-- Icon Placeholder -->
+          <div class="w-14 h-14 rounded-xl bg-[#E8E4DC]/10 border border-[#E8E4DC]/20 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:border-lime/50 group-hover:bg-lime/10 transition-all duration-300">
+             {service.icon === 'palette' && (
+               <svg class="w-7 h-7 text-[#F0EBE3] group-hover:text-lime transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>
+             )}
+             {service.icon === 'code' && (
+               <svg class="w-7 h-7 text-[#F0EBE3] group-hover:text-lime transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+             )}
+             {service.icon === 'search' && (
+                <svg class="w-7 h-7 text-[#F0EBE3] group-hover:text-lime transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+             )}
+          </div>
+
+          <h3 class="text-[#E8E4DC] text-2xl font-medium mb-4 group-hover:text-lime transition-colors">{service.title}</h3>
+          
+          <p class="text-[#E8E4DC]/60 leading-relaxed font-light">
+            {service.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  }
+</style>

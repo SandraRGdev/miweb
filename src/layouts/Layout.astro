@@ -47,10 +47,21 @@ const { title, description = "codev - Portfolio Portfolio Web | Diseñadora & De
 
 				document.querySelectorAll('a, button').forEach(el => {
 					el.addEventListener('mouseenter', () => {
-						gsap.to(cursor, { scale: 2, duration: 0.3 });
+						// Get the background color of the element to match it and get pure black with difference mode
+						const style = window.getComputedStyle(el);
+						const bgColor = style.backgroundColor;
+						gsap.to(cursor, { 
+							scale: 4.5, 
+							backgroundColor: bgColor !== 'transparent' && bgColor !== 'rgba(0, 0, 0, 0)' ? bgColor : 'rgba(224, 204, 250, 1)',
+							duration: 0.3 
+						});
 					});
 					el.addEventListener('mouseleave', () => {
-						gsap.to(cursor, { scale: 1, duration: 0.3 });
+						gsap.to(cursor, { 
+							scale: 1, 
+							backgroundColor: 'rgba(224, 204, 250, 1)',
+							duration: 0.3 
+						});
 					});
 				});
 			}

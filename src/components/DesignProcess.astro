@@ -1,0 +1,275 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Análisis & Briefing",
+    description: "Entendemos tus metas, marca y público objetivo para sentar bases sólidas.",
+    id: "step-1"
+  },
+  {
+    number: "02",
+    title: "Estrategia & UX",
+    description: "Definimos la arquitectura y el flujo de navegación para una experiencia fluida.",
+    id: "step-2"
+  },
+  {
+    number: "03",
+    title: "Diseño Visual & UI",
+    description: "Creamos una estética disruptiva y moderna que capture la esencia de tu marca.",
+    id: "step-3"
+  },
+  {
+    number: "04",
+    title: "Desarrollo",
+    description: "Construimos tu plataforma utilizando tecnologías de vanguardia y código limpio.",
+    id: "step-4"
+  },
+  {
+    number: "05",
+    title: "Optimización & SEO",
+    description: "Aseguramos el máximo rendimiento, velocidad y visibilidad en buscadores.",
+    id: "step-5"
+  },
+  {
+    number: "06",
+    title: "Lanzamiento",
+    description: "Desplegamos tu proyecto y realizamos las pruebas finales para un éxito total.",
+    id: "step-6"
+  }
+];
+---
+
+<section id="process-section" class="py-32 bg-[#031605] relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="mb-24 text-center">
+      <h2 class="text-lime text-6xl md:text-9xl font-light uppercase tracking-tight">
+        Nuestro <span class="text-[rgba(224,204,250,1)] italic font-light">proceso.</span>
+      </h2>
+    </div>
+
+    <div class="relative h-[1500px] md:h-[1600px]">
+      <!-- Smooth Curved Path -->
+      <div class="absolute inset-x-0 inset-y-0 w-full h-full pointer-events-none z-0">
+        <svg 
+          class="w-full h-full opacity-30" 
+          viewBox="0 0 1000 1600" 
+          preserveAspectRatio="none"
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path 
+            id="process-path-animated"
+            d="M500,0 
+               C500,100 550,100 550,200 
+               C550,325 450,325 450,450 
+               C450,600 550,600 550,750 
+               C550,900 450,900 450,1050 
+               C450,1200 550,1200 550,1350 
+               C550,1475 500,1475 500,1600" 
+            stroke="rgba(224, 204, 250, 1)" 
+            stroke-width="2" 
+             stroke-linecap="round"
+             stroke-linejoin="round"
+           />
+        </svg>
+      </div>
+
+      <!-- Steps Content -->
+      <div class="absolute inset-0 z-10 w-full h-full pointer-events-none">
+        {steps.map((step, index) => (
+          <div 
+            id={step.id}
+            class="process-step-item absolute inset-0 pointer-events-none"
+          >
+            <!-- Target Dot -->
+            <div class="process-dot-v2 absolute z-20 w-5 h-5 rounded-full bg-[#031605] border-2 border-[rgba(224,204,250,1)] transition-all duration-300 flex items-center justify-center">
+               <div class="absolute inset-x-[-15px] inset-y-[-15px] rounded-full border border-[rgba(224,204,250,1)]/20 animate-pulse-slow opacity-0 pulse-ring"></div>
+            </div>
+
+            <!-- Card -->
+            <div class="process-card absolute z-30 w-[260px] md:w-[320px] bg-[#1A2820]/95 backdrop-blur-3xl p-6 rounded-3xl border border-lime/20 hover:border-lime transition-all group shadow-2xl pointer-events-auto">
+              <span class="text-lime text-3xl md:text-4xl font-heading italic block mb-2 opacity-30 group-hover:opacity-100 transition-opacity">
+                {step.number}.
+              </span>
+              <h3 class="text-[rgba(224,204,250,1)] text-lg md:text-xl font-bold mb-2 uppercase tracking-tight leading-tight">{step.title}</h3>
+              <p class="text-lime/60 text-sm md:text-base font-light leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function setupAnimation() {
+    const path = document.querySelector('#process-path-animated') as SVGPathElement;
+    const dots = document.querySelectorAll('.process-dot-v2') as NodeListOf<HTMLElement>;
+    const cards = document.querySelectorAll('.process-card') as NodeListOf<HTMLElement>;
+    const pulses = document.querySelectorAll('.pulse-ring');
+    const section = document.querySelector('#process-section');
+
+    if (!path || !section) return;
+
+    const pathLength = path.getTotalLength();
+    if (pathLength === 0) {
+      setTimeout(setupAnimation, 200);
+      return;
+    }
+    
+    gsap.set(path, {
+      strokeDasharray: pathLength,
+      strokeDashoffset: pathLength
+    });
+
+    gsap.to(path, {
+      strokeDashoffset: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top 45%",
+        end: "bottom 95%",
+        scrub: 1,
+      }
+    });
+
+    // Positions dots: Step 1 (01) is the first dot at Index 0
+    // Indices: 0-left, 1-right, 2-left (03), 3-right, 4-left (05), 5-right (06)
+    const dotPlacements = [0.12, 0.28, 0.45, 0.62, 0.82, 1.0];
+    const isMobile = window.innerWidth < 768;
+
+    dots.forEach((dot, i) => {
+      const point = path.getPointAtLength(dotPlacements[i] * pathLength);
+      
+      const xPercent = (point.x / 1000) * 100;
+      const yPercent = (point.y / 1600) * 100;
+
+      gsap.set(dot, {
+        left: `${xPercent}%`,
+        top: `${yPercent}%`,
+        xPercent: -50,
+        yPercent: -50
+      });
+
+      if (!isMobile) {
+        const isLeft = i % 2 === 0;
+        // Increase gap significantly to avoid any line overlap
+        const gap = 120; 
+
+        gsap.set(cards[i], {
+          left: `${xPercent}%`,
+          top: `${yPercent}%`,
+          x: isLeft ? -gap : gap,
+          xPercent: isLeft ? -100 : 0, 
+          yPercent: -50,
+        });
+      } else {
+         gsap.set(cards[i], {
+            top: `${yPercent}%`,
+            left: "50%",
+            xPercent: -50,
+            width: "85%",
+            maxWidth: "320px",
+            y: 40, 
+            zIndex: 30 + i
+         });
+      }
+
+      gsap.set(dot, {
+        left: `${xPercent}%`,
+        top: `${yPercent}%`,
+        xPercent: -50,
+        yPercent: -50
+      });
+
+      if (!isMobile) {
+        const isLeft = i % 2 === 0;
+        const gap = 80; // Distance from center path
+
+        gsap.set(cards[i], {
+          left: `${xPercent}%`,
+          top: `${yPercent}%`,
+          x: isLeft ? -(gap + 160) : gap - 160, // 320px / 2 = 160
+          xPercent: isLeft ? -50 : 50,
+          yPercent: -50,
+          width: "320px"
+        });
+      } else {
+         gsap.set(cards[i], {
+            top: `${yPercent}%`,
+            left: "50%",
+            xPercent: -50,
+            width: "85%",
+            maxWidth: "320px",
+            y: 40, 
+            zIndex: 30 + i
+         });
+      }
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: () => `top+=${dotPlacements[i] * (section as HTMLElement).offsetHeight * 0.8} center`,
+        onEnter: () => {
+          gsap.to(dot, { backgroundColor: "#DAFC69", scale: 1.3, duration: 0.3 });
+          gsap.to(pulses[i], { opacity: 1, duration: 0.3 });
+          gsap.to(cards[i], { borderColor: "rgba(218,252,105,0.6)", y: isMobile ? 30 : -5, duration: 0.4 });
+        },
+        onLeaveBack: () => {
+          gsap.to(dot, { backgroundColor: "transparent", scale: 1, duration: 0.3 });
+          gsap.to(pulses[i], { opacity: 0, duration: 0.3 });
+          gsap.to(cards[i], { borderColor: "rgba(218,252,105,0.2)", y: isMobile ? 40 : 0, duration: 0.4 });
+        }
+      });
+    });
+  }
+
+  // Use a slight delay to ensure container height or layout is stable
+  window.addEventListener('load', () => {
+    setTimeout(setupAnimation, 200);
+  });
+  
+  window.addEventListener('resize', () => {
+     ScrollTrigger.refresh();
+     setupAnimation();
+  });
+</script>
+
+<style>
+  #process-section {
+    z-index: 2;
+  }
+  
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  .process-card h3 {
+    letter-spacing: 0.5px !important;
+    line-height: 1.1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+  @media (min-width: 768px) {
+    .process-card h3 {
+      letter-spacing: 2px !important; /* Reduced from 5px to ensure fit */
+    }
+  }
+
+  @keyframes pulse-slow {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(3); opacity: 0; }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 3s infinite;
+  }
+</style>

@@ -1,25 +1,19 @@
 ---
-import bgHomeImg from '../img/bg2.jpg';
+import DesignProcess from './DesignProcess.astro';
 ---
 
 <section id="about-section" class="relative bg-deep-black overflow-hidden py-24 md:py-32">
   <div id="about-content-wrapper" class="max-w-7xl mx-auto px-6 relative">
     
-    <!-- Background Image (Now static/simplified) -->
-    <div class="about-visual relative w-full aspect-video md:aspect-[21/9] mb-16 overflow-hidden rounded-3xl border border-white/10">
-        <img 
-          src={bgHomeImg.src} 
-          alt="Background Home" 
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black/40"></div>
-    </div>
+
+
+    <DesignProcess />
 
     <!-- Content -->
     <div class="about-text-content flex flex-col items-center justify-center text-center">
       <div class="max-w-4xl w-full space-y-8 md:space-y-12">
-        <h2 class="text-3xl md:text-7xl lg:text-8xl font-black leading-[1.15] text-white uppercase">
-          IMPULSANDO LA <span class="text-lime italic">INNOVACIÓN VISUAL</span>
+        <h2 class="text-3xl md:text-7xl lg:text-8xl font-light leading-[1.15] text-lime uppercase">
+          IMPULSANDO LA <span class="text-[rgba(224,204,250,1)] italic font-light">INNOVACIÓN VISUAL</span>
         </h2>
         
         <p class="text-white/90 text-lg md:text-xl lg:text-2xl leading-relaxed font-light max-w-3xl mx-auto">
@@ -29,7 +23,7 @@ import bgHomeImg from '../img/bg2.jpg';
         <div class="flex justify-center pt-8">
           <a 
             href="/portfolio"
-            class="inline-flex items-center gap-6 text-lime font-bold group cursor-pointer bg-white/5 backdrop-blur-2xl px-8 py-4 md:px-10 md:py-5 rounded-full border border-lime/30 hover:bg-lime hover:text-deep-black transition-all"
+            class="inline-flex items-center gap-6 text-deep-black font-bold group cursor-pointer bg-[rgba(224,204,250,1)] backdrop-blur-2xl px-8 py-4 md:px-10 md:py-5 rounded-full border border-[rgba(224,204,250,0.3)] hover:bg-lime hover:text-deep-black transition-all"
           >
             <span class="text-base md:text-lg uppercase tracking-[0.2em]">VER PROYECTOS</span>
             <svg class="w-6 h-6 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>

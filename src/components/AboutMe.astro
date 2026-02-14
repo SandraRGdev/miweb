@@ -1,0 +1,115 @@
+---
+import sandra from '../img/sandra.jpg';
+const features = [
+  {
+    title: "Innovación",
+    description: "Siempre busco nuevas formas de resolver problemas y crear experiencias únicas.",
+    icon: "bulb"
+  },
+  {
+    title: "Precisión",
+    description: "Cada pixel cuenta. Me obsesiono con los detalles para entregar excelencia.",
+    icon: "target"
+  },
+  {
+    title: "Colaboración",
+    description: "Trabajo codo a codo contigo para transformar tus ideas en realidad.",
+    icon: "users"
+  },
+  {
+    title: "Calidad",
+    description: "Código limpio, escalable y optimizado para el mejor rendimiento.",
+    icon: "shield"
+  }
+];
+---
+
+<section id="about-me-section" class="py-24 bg-[#031605] relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      
+      <!-- Left Column: Text Content -->
+      <div class="space-y-8">
+        <div>
+          <span class="text-lime text-sm font-bold tracking-[0.2em] uppercase block mb-4">Sobre Mí</span>
+          <h2 class="text-lime text-5xl md:text-6xl font-light leading-tight tracking-tight uppercase">
+            Más que código, <br />
+            <span class="text-[rgba(224,204,250,1)] italic font-light">tu socio digital.</span>
+          </h2>
+        </div>
+
+        <div class="space-y-4 text-white/70 text-lg font-light leading-relaxed">
+          <p>
+            Soy una diseñadora y desarrolladora apasionada por crear experiencias digitales que marcan la diferencia. 
+            Combino la lógica del código con la creatividad del diseño para construir productos que no solo funcionan a la perfección, 
+            sino que también cautivan visualmente.
+          </p>
+          <p>
+            Mi enfoque es integral: desde la conceptualización hasta el despliegue, me aseguro de que cada etapa del proceso 
+            esté alineada con tus objetivos comerciales y la identidad de tu marca.
+          </p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
+          {features.map((feature) => (
+            <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-lime/30 transition-colors group">
+              <div class="w-10 h-10 rounded-lg bg-lime/10 flex items-center justify-center mb-4 text-lime group-hover:scale-110 transition-transform">
+                {feature.icon === 'bulb' && <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>}
+                {feature.icon === 'target' && <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>} <!-- Replacing target with lightning/action based on 'action' look or keep target -->
+                {feature.icon === 'users' && <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>}
+                {feature.icon === 'shield' && <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
+              </div>
+              <h3 class="text-white font-bold text-lg mb-2">{feature.title}</h3>
+              <p class="text-white/50 text-sm leading-relaxed">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Column: Image & Stats -->
+      <div class="relative">
+        <div class="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 group">
+            <!-- User Image -->
+            <img 
+              src={sandra.src} 
+              alt="Sandra" 
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <!-- Overlay Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-deep-black/80 via-transparent to-transparent"></div>
+
+            <!-- Floating Stats Cards -->
+            <div class="absolute bottom-8 left-8 right-8 flex flex-col gap-4">
+                <!-- Stat 1 -->
+                <div class="bg-white/10 backdrop-blur-md border border-white/10 p-4 rounded-xl flex items-center gap-4 transform translate-y-2 opacity-90 hover:scale-105 transition-all">
+                    <div class="w-12 h-12 rounded-full bg-lime text-deep-black flex items-center justify-center font-bold text-xl">
+                        +5
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-lg leading-none">Años</p>
+                        <p class="text-white/60 text-sm">de experiencia</p>
+                    </div>
+                </div>
+                 <!-- Stat 2 -->
+                 <div class="bg-deep-black/80 backdrop-blur-md border border-white/10 p-3 rounded-xl flex items-center gap-3 transform hover:scale-105 transition-all ml-12">
+                     <div class="w-10 h-10 rounded-full bg-lime text-deep-black flex items-center justify-center relative">
+                        <div class="absolute inset-0 rounded-full bg-lime animate-ping opacity-20"></div>
+                        <div class="w-2.5 h-2.5 bg-deep-black rounded-full"></div>
+                     </div>
+                     <div>
+                         <p class="text-white font-bold text-sm leading-none uppercase">Disponibilidad</p>
+                         <p class="text-[rgba(224,204,250,1)] text-[10px] font-bold uppercase">Inmediata</p>
+                     </div>
+                 </div>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute -top-10 -right-10 w-64 h-64 bg-lime/20 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+      </div>
+
+    </div>
+  </div>
+</section>

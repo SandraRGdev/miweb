@@ -2,30 +2,26 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Skills from '../components/Skills.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
-import CTA from '../components/CTA.astro';
+import Services from '../components/Services.astro';
+import AboutMe from '../components/AboutMe.astro';
+import Portfolio from '../components/Portfolio.astro';
+import DesignProcess from '../components/DesignProcess.astro';
+import TechStack from '../components/TechStack.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="codev | Diseñadora & Frontend Developer">
 	<Nav />
 	<main>
 		<Hero />
-		<About />
-		<Skills />
-		<PortfolioPreview />
-		<CTA />
+    <TechStack />
+		<AboutMe />
+		<Services />
+		<Portfolio />
+		<DesignProcess />
+		<Contact />
 	</main>
 	
-	<footer class="py-12 px-4 border-t border-white/5 bg-deep-black text-center text-white/40 text-sm font-light">
-		<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-			<p>&copy; 2026 codev. Todos los derechos reservados.</p>
-			<div class="flex gap-8">
-				<a href="#" class="hover:text-lime transition-colors">LinkedIn</a>
-				<a href="#" class="hover:text-lime transition-colors">GitHub</a>
-				<a href="#" class="hover:text-lime transition-colors">Behance</a>
-			</div>
-		</div>
-	</footer>
+  <Footer />
 </Layout>
