@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/node": "^9.5.2",
     "@neondatabase/serverless": "^1.0.2",
+    "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.1.18",
     "@tsparticles/engine": "^3.9.1",
     "@tsparticles/slim": "^3.9.1",

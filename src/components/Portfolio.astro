@@ -5,36 +5,39 @@ import elementor from '../img/elementor.webp';
 
 const projects = [
   {
+    id: "01",
     title: "VerFlix",
     category: "Web App / API",
     image: verflix1.src,
-    description: "Plataforma de streaming cinematic con integración de TMDB API.",
-    slug: "verflix"
+    description: "Plataforma de streaming cinematic con integración de TMDB API. Diseño moderno y experiencia de usuario fluida.",
+    slug: "verflix",
+    bgColor: "#1A2820"
   },
   {
+    id: "02",
     title: "ImgPros",
     category: "Web Tool / React",
     image: imgpro.src,
-    description: "Optimización y edición masiva de imágenes directamente en el navegador.",
-    slug: "imgpros"
+    description: "Optimización y edición masiva de imágenes directamente en el navegador. Herramienta potente y rápida.",
+    slug: "imgpros",
+    bgColor: "#0F1812"
   },
   {
+    id: "03",
     title: "ElementorIA",
     category: "Workflow Tool / Extension",
     image: elementor.src,
-    description: "Extensión para mejorar el flujo de maquetación responsive en Elementor.",
-    slug: "elementoria"
+    description: "Extensión para mejorar el flujo de maquetación responsive en Elementor. Productividad mejorada.",
+    slug: "elementoria",
+    bgColor: "#031605"
   }
 ];
 ---
 
-<section id="portfolio-section" class="py-16 md:py-32 bg-[#031605] relative">
-  <!-- Subtle gradient -->
-  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0F1812]/20 pointer-events-none"></div>
-  <div class="relative z-10 max-w-7xl mx-auto px-6">
-    
-    <!-- Section Header -->
-    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<!-- Portfolio Section Header -->
+<section class="py-16 md:py-24 bg-[#031605] relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-8 gap-8">
       <div>
         <span class="text-lime text-sm font-bold tracking-[0.2em] uppercase block mb-4">Portafolio</span>
         <h2 class="text-4xl md:text-5xl font-light tracking-tight uppercase text-[#E8E4DC]">
@@ -42,59 +45,188 @@ const projects = [
           <span class="text-[rgba(224,204,250,1)] italic font-light">hablan por sí solos.</span>
         </h2>
       </div>
-      
-      <!-- Filters -->
-      <div class="flex gap-2 overflow-x-auto pb-2 md:pb-0">
-        <button class="px-6 py-2 rounded-full border border-lime/10 bg-lime/10 text-lime hover:bg-lime hover:text-[#1A2820] transition-all text-sm font-light whitespace-nowrap active">Todos</button>
-        <button class="px-6 py-2 rounded-full border border-[#E8E4DC]/10 text-[#E8E4DC]/60 hover:bg-[#E8E4DC]/5 hover:text-[#E8E4DC] transition-all text-sm font-light whitespace-nowrap">Web Design</button>
-        <button class="px-6 py-2 rounded-full border border-[#E8E4DC]/10 text-[#E8E4DC]/60 hover:bg-[#E8E4DC]/5 hover:text-[#E8E4DC] transition-all text-sm font-light whitespace-nowrap">Apps</button>
-      </div>
     </div>
-
-    <!-- Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {projects.map((project) => (
-        <a 
-          href={`/portfolio/${project.slug}`} 
-          class="group relative aspect-[3/4] rounded-[24px] overflow-hidden cursor-pointer block"
-        >
-          <!-- Image -->
-          <img 
-            src={project.image} 
-            alt={project.title} 
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-          />
-          
-          <!-- Overlay -->
-          <div class="absolute inset-0 bg-gradient-to-t from-[#0F1812]/95 via-[#0F1812]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-            
-            <!-- Content -->
-            <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
-              <span class="text-lime/70 text-xs font-medium uppercase tracking-wider mb-2 block">{project.category}</span>
-              <h3 class="text-2xl font-medium text-[#E8E4DC] mb-2">{project.title}</h3>
-              <p class="text-[#E8E4DC]/70 text-sm mb-4 line-clamp-2 leading-relaxed font-light">{project.description}</p>
-              
-              <div class="flex items-center gap-2 text-lime font-light text-sm group-hover:gap-4 transition-all">
-                Ver proyecto
-                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </a>
-      ))}
-    </div>
-
-    <!-- View All Button -->
-    <div class="mt-16 text-center">
-      <a href="#" class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[#E8E4DC]/10 bg-[#E8E4DC]/5 text-[#E8E4DC] font-light hover:bg-lime hover:text-[#1A2820] hover:border-lime transition-all group">
-        Ver todos los proyectos
-        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
-    </div>
-
   </div>
 </section>
+
+<!-- Stacking Cards Section -->
+<div id="portfolio-stack-container" class="relative">
+  {projects.map((project, index) => {
+    const isLast = index === projects.length - 1;
+    return (
+      <section 
+        class={`${isLast ? 'last-pinned' : 'pinned'} relative min-h-screen flex items-center justify-center`}
+        style={`background-color: ${project.bgColor};`}
+      >
+        <div class="myeffect w-full">
+          <div class="max-w-7xl mx-auto px-6 py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+              
+              <!-- Left: Project Info -->
+              <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                  <span class="text-lime text-7xl md:text-9xl font-bold opacity-20">{project.id}</span>
+                  <span class="text-lime/70 text-xs font-medium uppercase tracking-wider">{project.category}</span>
+                </div>
+                
+                <h3 class="text-5xl md:text-7xl font-light tracking-tight uppercase text-[#E8E4DC]">
+                  {project.title}
+                </h3>
+                
+                <p class="text-[#E8E4DC]/70 text-lg leading-relaxed font-light max-w-lg">
+                  {project.description}
+                </p>
+                
+                <div class="flex gap-4 pt-6">
+                  <a 
+                    href={`/portfolio/${project.slug}`}
+                    class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-lime text-[#1A2820] font-medium hover:bg-lime/90 transition-all group"
+                  >
+                    Ver proyecto
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                  
+                  <a 
+                    href="#"
+                    class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[#E8E4DC]/20 text-[#E8E4DC] font-light hover:bg-[#E8E4DC]/5 transition-all"
+                  >
+                    Live Demo
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Right: Project Image -->
+              <div class="relative">
+                <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                
+                <!-- Decorative elements -->
+                <div class="absolute -top-4 -right-4 w-24 h-24 bg-lime/10 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-[rgba(224,204,250,0.1)] rounded-full blur-3xl"></div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  })}
+</div>
+
+<!-- View All Projects Section -->
+<section class="py-16 bg-[#031605] relative">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <a href="/portfolio" class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[#E8E4DC]/10 bg-[#E8E4DC]/5 text-[#E8E4DC] font-light hover:bg-lime hover:text-[#1A2820] hover:border-lime transition-all group">
+      Ver todos los proyectos
+      <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import Lenis from '@studio-freight/lenis';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    
+    /* -------------------------------------------------------
+      TO DISABLE ANIMATIONS ON MOBILE/TABLET:
+      Simply comment out the line below ↓↓↓
+    ------------------------------------------------------- */
+    if (!window.matchMedia("(min-width: 1025px)").matches) return;
+    
+    /* ---------------------------------
+       LENIS SMOOTH SCROLL
+    ---------------------------------- */
+    const lenis = new Lenis({
+      smooth: true,
+      normalizeWheel: true,
+      lerp: 0.07,
+    });
+
+    // GSAP scroll bridge
+    lenis.on("scroll", ScrollTrigger.update);
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    /* ---------------------------------
+       STACKING ANIMATION
+    ---------------------------------- */
+    const lastCard = document.querySelector(".last-pinned");
+    const sections = gsap.utils.toArray(".pinned");
+
+    sections.forEach((section, index) => {
+      if (section === lastCard) return;
+
+      const effect = section.querySelector(".myeffect");
+      const nextSection = sections[index + 1] || lastCard;
+
+      const distance = nextSection.offsetTop - section.offsetTop;
+
+      // Pin the section
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "+=" + distance,
+        pin: true,
+        pinSpacing: false,
+        scrub: true,
+      });
+
+      // Alternate rotation
+      const rotation = index % 2 === 0 ? -20 : 20;
+
+      // Shrink/rotate section as next section approaches
+      gsap.fromTo(
+        effect,
+        { scale: 1, y: 0 },
+        {
+          scale: 0.3,
+          rotation: rotation,
+          y: 400,
+          ease: "power1.inOut",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "+=" + distance,
+            scrub: true,
+
+            // Hide previous section once transition almost complete
+            onUpdate: (self) => {
+              section.style.visibility =
+                self.progress > 0.9 ? "hidden" : "visible";
+            }
+          }
+        }
+      );
+    });
+  });
+</script>
+
+<style>
+  /* Ensure smooth transitions */
+  .myeffect {
+    transform-origin: center center;
+    will-change: transform;
+  }
+  
+  .pinned, .last-pinned {
+    will-change: transform;
+  }
+</style>
