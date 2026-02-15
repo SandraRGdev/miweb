@@ -50,47 +50,48 @@ const projects = [
 </section>
 
 <!-- Stacking Cards Section -->
-<div id="portfolio-stack-container" class="relative">
+<div id="portfolio-stack-container" class="relative bg-[#031605]">
   {projects.map((project, index) => {
     const isLast = index === projects.length - 1;
     return (
       <section 
-        class={`${isLast ? 'last-pinned' : 'pinned'} relative min-h-screen flex items-center justify-center`}
-        style={`background-color: ${project.bgColor};`}
+        class={`${isLast ? 'last-pinned' : 'pinned'} relative min-h-screen flex items-center justify-center border-t border-x border-[rgba(224,204,250,0.3)] rounded-t-[3rem] md:rounded-t-[5rem] overflow-hidden shadow-[0_-20px_60px_rgba(0,0,0,0.7)]`}
+        style={`background: ${project.bgColor}; box-shadow: 0 -20px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(224,204,250,0.5);`}
       >
-        <div class="myeffect w-full">
-          <div class="max-w-7xl mx-auto px-6 py-20">
+        <div class="myeffect w-full h-full flex items-center">
+          <div class="max-w-7xl mx-auto px-6 py-20 w-full">
             <div class="grid md:grid-cols-2 gap-12 items-center">
               
               <!-- Left: Project Info -->
               <div class="space-y-6">
                 <div class="flex items-center gap-4">
-                  <span class="text-lime text-7xl md:text-9xl font-bold opacity-20">{project.id}</span>
-                  <span class="text-lime/70 text-xs font-medium uppercase tracking-wider">{project.category}</span>
+                  <span class="text-[rgba(224,204,250,0.1)] text-7xl md:text-9xl font-bold">{project.id}</span>
+                  <div class="h-px w-20 bg-lime/30"></div>
+                  <span class="text-lime text-xs font-bold uppercase tracking-widest border border-lime/30 px-3 py-1 rounded-full">{project.category}</span>
                 </div>
                 
-                <h3 class="text-5xl md:text-7xl font-light tracking-tight uppercase text-[#E8E4DC]">
+                <h3 class="text-5xl md:text-8xl font-light tracking-tighter uppercase text-white drop-shadow-lg">
                   {project.title}
                 </h3>
                 
-                <p class="text-[#E8E4DC]/70 text-lg leading-relaxed font-light max-w-lg">
+                <p class="text-[#E8E4DC]/80 text-lg leading-relaxed font-light max-w-lg border-l-2 border-[rgba(224,204,250,0.2)] pl-6">
                   {project.description}
                 </p>
                 
-                <div class="flex gap-4 pt-6">
+                <div class="flex flex-wrap gap-4 pt-8">
                   <a 
                     href={`/portfolio/${project.slug}`}
-                    class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-lime text-[#1A2820] font-medium hover:bg-lime/90 transition-all group"
+                    class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-lime text-[#1A2820] font-bold hover:bg-[#E0CCFA] hover:text-[#120224] transition-all duration-300 group shadow-[0_0_20px_rgba(218,252,105,0.3)] hover:shadow-[0_0_30px_rgba(224,204,250,0.5)]"
                   >
-                    Ver proyecto
-                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    Ver caso de estudio
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </a>
                   
                   <a 
                     href="#"
-                    class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[#E8E4DC]/20 text-[#E8E4DC] font-light hover:bg-[#E8E4DC]/5 transition-all"
+                    class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[rgba(224,204,250,0.3)] text-[rgba(224,204,250,1)] font-light hover:bg-[rgba(224,204,250,0.1)] transition-all"
                   >
                     Live Demo
                   </a>
@@ -98,18 +99,20 @@ const projects = [
               </div>
               
               <!-- Right: Project Image -->
-              <div class="relative">
-                <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+              <div class="relative group">
+                <div class="aspect-[4/5] md:aspect-[5/6] rounded-[2rem] overflow-hidden shadow-2xl border border-[rgba(224,204,250,0.1)] relative z-10">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    class="w-full h-full object-cover"
+                    class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   />
+                  <!-- Inner overlay/glow inside image container -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#031605]/90 to-transparent opacity-60"></div>
                 </div>
                 
-                <!-- Decorative elements -->
-                <div class="absolute -top-4 -right-4 w-24 h-24 bg-lime/10 rounded-full blur-3xl"></div>
-                <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-[rgba(224,204,250,0.1)] rounded-full blur-3xl"></div>
+                <!-- Decorative Glows -->
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-lime/10 rounded-full blur-[80px] z-0"></div>
+                <div class="absolute -bottom-10 -left-10 w-60 h-60 bg-[rgba(224,204,250,0.05)] rounded-full blur-[100px] z-0"></div>
               </div>
               
             </div>
