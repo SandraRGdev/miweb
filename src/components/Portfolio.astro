@@ -138,7 +138,6 @@ const projects = [
 <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  import Lenis from '@studio-freight/lenis';
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -148,23 +147,8 @@ const projects = [
       ANIMATIONS NOW ENABLED ON ALL DEVICES INCLUDING MOBILE
     ------------------------------------------------------- */
     
-    /* ---------------------------------
-       LENIS SMOOTH SCROLL
-    ---------------------------------- */
-    const lenis = new Lenis({
-      smooth: true,
-      normalizeWheel: true,
-      lerp: 0.07,
-    });
-
-    // GSAP scroll bridge
-    lenis.on("scroll", ScrollTrigger.update);
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    // Refresh ScrollTrigger to ensure correct positions after layout stability
+    ScrollTrigger.refresh();
 
     /* ---------------------------------
        STACKING ANIMATION
@@ -175,14 +159,15 @@ const projects = [
     sections.forEach((section, index) => {
       if (section === lastCard) return;
 
-      const effect = section.querySelector(".myeffect");
-      const nextSection = sections[index + 1] || lastCard;
+      const element = section as HTMLElement;
+      const effect = element.querySelector(".myeffect");
+      const nextSection = (sections[index + 1] || lastCard) as HTMLElement;
 
-      const distance = nextSection.offsetTop - section.offsetTop;
+      const distance = nextSection.offsetTop - element.offsetTop;
 
       // Pin the section
       ScrollTrigger.create({
-        trigger: section,
+        trigger: element,
         start: "top top",
         end: "+=" + distance,
         pin: true,
@@ -203,14 +188,14 @@ const projects = [
           y: 400,
           ease: "power1.inOut",
           scrollTrigger: {
-            trigger: section,
+            trigger: element,
             start: "top top",
             end: "+=" + distance,
             scrub: true,
 
             // Hide previous section once transition almost complete
             onUpdate: (self) => {
-              section.style.visibility =
+              element.style.visibility =
                 self.progress > 0.9 ? "hidden" : "visible";
             }
           }
