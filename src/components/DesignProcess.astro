@@ -47,12 +47,12 @@ const steps = [
       </h2>
     </div>
 
-    <div class="relative h-[1500px] md:h-[1600px]">
+    <div class="relative h-[1000px] md:h-[1200px]">
       <!-- Smooth Curved Path -->
       <div class="absolute inset-x-0 inset-y-0 w-full h-full pointer-events-none z-0">
         <svg 
           class="w-full h-full opacity-30" 
-          viewBox="0 0 1000 1600" 
+          viewBox="0 0 1000 1200" 
           preserveAspectRatio="none"
           fill="none" 
           xmlns="http://www.w3.org/2000/svg"
@@ -60,12 +60,12 @@ const steps = [
           <path 
             id="process-path-animated"
             d="M500,0 
-               C500,100 550,100 550,200 
-               C550,325 450,325 450,450 
-               C450,600 550,600 550,750 
-               C550,900 450,900 450,1050 
-               C450,1200 550,1200 550,1350 
-               C550,1475 500,1475 500,1600" 
+               C500,75 550,75 550,150 
+               C550,250 450,250 450,350 
+               C450,450 550,450 550,550 
+               C550,650 450,650 450,750 
+               C450,850 550,850 550,950 
+               C550,1050 500,1050 500,1200" 
             stroke="rgba(224, 204, 250, 1)" 
             stroke-width="2" 
              stroke-linecap="round"
@@ -137,7 +137,7 @@ const steps = [
         trigger: section,
         start: "top 45%",
         end: "bottom 95%",
-        scrub: 1,
+        scrub: true,
       }
     });
 
