@@ -10,6 +10,13 @@ const projects = [
     category: "Web App / API",
     image: verflix1.src,
     description: "Plataforma de streaming cinematic con integración de TMDB API. Diseño moderno y experiencia de usuario fluida.",
+    quote: "La mejor experiencia de streaming ahora al alcance de tu mano, con una interfaz que redefine el entretenimiento digital.",
+    features: [
+      "Integración en tiempo real con TMDB API",
+      "Diseño responsivo optimizado para móviles",
+      "Carga de datos asíncrona ultra-rápida",
+      "Interfaz cinematográfica inmersiva"
+    ],
     slug: "verflix",
     bgColor: "#031605"
   },
@@ -19,6 +26,13 @@ const projects = [
     category: "Web Tool / React",
     image: imgpro.src,
     description: "Optimización y edición masiva de imágenes directamente en el navegador. Herramienta potente y rápida.",
+    quote: "Potencia visual sin complicaciones: procesa miles de imágenes en segundos desde tu navegador.",
+    features: [
+      "Procesamiento masivo en el cliente",
+      "Optimización SEO automática",
+      "Conversión de formatos instantánea",
+      "Sin servidores: 100% privacidad"
+    ],
     slug: "imgpros",
     bgColor: "#031605"
   },
@@ -28,6 +42,13 @@ const projects = [
     category: "Workflow Tool / Extension",
     image: elementor.src,
     description: "Extensión para mejorar el flujo de maquetación responsive en Elementor. Productividad mejorada.",
+    quote: "Lleva tu flujo de trabajo en Elementor al siguiente nivel con automatización inteligente.",
+    features: [
+      "Maquetación ultra-rápida",
+      "Atajos inteligentes personalizados",
+      "Adaptación responsive automática",
+      "Exportación de estilos globales"
+    ],
     slug: "elementoria",
     bgColor: "#031605"
   }
@@ -50,73 +71,78 @@ const projects = [
 </section>
 
 <!-- Stacking Cards Section -->
-<div id="portfolio-stack-container" class="relative bg-[#031605]">
+<div id="portfolio-stack-container" class="relative bg-[#031605] px-4 md:px-0">
   {projects.map((project, index) => {
-    const isLast = index === projects.length - 1;
     return (
       <section 
-        class={`${isLast ? 'last-pinned' : 'pinned'} relative min-h-screen flex items-center justify-center border-t border-x border-[rgba(224,204,250,0.3)] rounded-t-[3rem] md:rounded-t-[5rem] overflow-hidden shadow-[0_-20px_60px_rgba(0,0,0,0.7)]`}
-        style={`background: ${project.bgColor}; box-shadow: 0 -20px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(224,204,250,0.5);`}
+        class="portfolio-card sticky top-20 mb-[10vh] md:mb-[20vh] min-h-[70vh] md:min-h-[85vh] w-full max-w-7xl mx-auto bg-[#1A2820] rounded-[2.5rem] md:rounded-[4rem] border border-lime/20 overflow-hidden shadow-2xl transition-all duration-500"
+        style={`z-index: ${index + 1};`}
       >
-        <div class="myeffect w-full h-full flex items-center">
-          <div class="max-w-7xl mx-auto px-6 py-20 w-full">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-              
-              <!-- Left: Project Info -->
-              <div class="space-y-6">
-                <div class="flex items-center gap-4">
-                  <span class="text-[rgba(224,204,250,0.1)] text-7xl md:text-9xl font-bold">{project.id}</span>
-                  <div class="h-px w-20 bg-lime/30"></div>
-                  <span class="text-lime text-xs font-bold uppercase tracking-widest border border-lime/30 px-3 py-1 rounded-full">{project.category}</span>
-                </div>
-                
-                <h3 class="text-5xl md:text-8xl font-light tracking-tighter uppercase text-white drop-shadow-lg">
-                  {project.title}
-                </h3>
-                
-                <p class="text-[#E8E4DC]/80 text-lg leading-relaxed font-light max-w-lg border-l-2 border-[rgba(224,204,250,0.2)] pl-6">
-                  {project.description}
+        <div class="grid lg:grid-cols-2 h-full">
+          
+          <!-- Left Column: Media Grid (2x2) -->
+          <div class="p-4 md:p-8 lg:p-12 bg-black/20">
+            <div class="grid grid-cols-2 grid-rows-2 gap-4 h-full aspect-square lg:aspect-auto">
+              <!-- Top Left: Quote -->
+              <div class="flex items-center justify-center p-6 bg-lime/10 rounded-3xl border border-lime/10">
+                <p class="text-[#E8E4DC] text-sm md:text-base italic font-light leading-relaxed">
+                  "{project.quote}"
                 </p>
-                
-                <div class="flex flex-wrap gap-4 pt-8">
-                  <a 
-                    href={`/portfolio/${project.slug}`}
-                    class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-lime text-[#1A2820] font-bold hover:bg-[#E0CCFA] hover:text-[#120224] transition-all duration-300 group shadow-[0_0_20px_rgba(218,252,105,0.3)] hover:shadow-[0_0_30px_rgba(224,204,250,0.5)]"
-                  >
-                    Ver caso de estudio
-                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </a>
-                  
-                  <a 
-                    href="#"
-                    class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[rgba(224,204,250,0.3)] text-[rgba(224,204,250,1)] font-light hover:bg-[rgba(224,204,250,0.1)] transition-all"
-                  >
-                    Live Demo
-                  </a>
-                </div>
               </div>
-              
-              <!-- Right: Project Image -->
-              <div class="relative group">
-                <div class="aspect-[4/5] md:aspect-[5/6] rounded-[2rem] overflow-hidden shadow-2xl border border-[rgba(224,204,250,0.1)] relative z-10">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                  />
-                  <!-- Inner overlay/glow inside image container -->
-                  <div class="absolute inset-0 bg-gradient-to-t from-[#031605]/90 to-transparent opacity-60"></div>
-                </div>
-                
-                <!-- Decorative Glows -->
-                <div class="absolute -top-10 -right-10 w-40 h-40 bg-lime/10 rounded-full blur-[80px] z-0"></div>
-                <div class="absolute -bottom-10 -left-10 w-60 h-60 bg-[rgba(224,204,250,0.05)] rounded-full blur-[100px] z-0"></div>
+              <!-- Top Right: Image 1 -->
+              <div class="rounded-3xl overflow-hidden border border-white/10 group">
+                <img src={project.image} alt="" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
               </div>
-              
+              <!-- Bottom Left: Image 2 -->
+              <div class="rounded-3xl overflow-hidden border border-white/10 group">
+                <img src={project.image} alt="" class="w-full h-full object-cover scale-150 group-hover:scale-100 transition-all duration-700" />
+              </div>
+              <!-- Bottom Right: Image 3 -->
+              <div class="rounded-3xl overflow-hidden border border-white/10 group">
+                <img src={project.image} alt="" class="w-full h-full object-cover contrast-125 group-hover:contrast-100 transition-all duration-700" />
+              </div>
             </div>
           </div>
+
+          <!-- Right Column: Content -->
+          <div class="p-8 md:p-12 lg:p-20 flex flex-col justify-center space-y-8">
+            <div class="space-y-4">
+              <span class="text-lime text-xs font-bold uppercase tracking-[0.3em] inline-block mb-2">
+                {project.category}
+              </span>
+              <h3 class="text-5xl md:text-8xl font-black uppercase tracking-tighter text-white leading-none">
+                {project.title}
+              </h3>
+              <p class="text-[#E8E4DC]/80 text-lg md:text-xl font-light leading-relaxed max-w-xl">
+                {project.description}
+              </p>
+            </div>
+
+            <!-- Features List -->
+            <ul class="space-y-4">
+              {project.features.map(feature => (
+                <li class="flex items-center gap-3 text-[#E8E4DC]/90 font-light">
+                  <div class="w-5 h-5 rounded-full border-2 border-lime flex items-center justify-center">
+                    <div class="w-1.5 h-1.5 rounded-full bg-lime"></div>
+                  </div>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <div class="pt-8">
+              <a 
+                href={`/portfolio/${project.slug}`}
+                class="inline-flex items-center gap-4 px-10 py-5 rounded-full bg-lime text-[#1A2820] font-bold text-lg hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_10px_30px_rgba(218,252,105,0.2)]"
+              >
+                Ver Proyecto
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
         </div>
       </section>
     );
@@ -124,9 +150,9 @@ const projects = [
 </div>
 
 <!-- View All Projects Section -->
-<section class="py-16 bg-[#031605] relative">
+<section class="py-24 bg-[#031605] relative z-20">
   <div class="max-w-7xl mx-auto px-6 text-center">
-    <a href="/portfolio" class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[#E8E4DC]/10 bg-[#E8E4DC]/5 text-[#E8E4DC] font-light hover:bg-lime hover:text-[#1A2820] hover:border-lime transition-all group">
+    <a href="/portfolio" class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[#E8E4DC]/20 bg-white/5 text-[#E8E4DC] hover:bg-white hover:text-[#031605] transition-all group">
       Ver todos los proyectos
       <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -141,78 +167,38 @@ const projects = [
 
   gsap.registerPlugin(ScrollTrigger);
 
-  document.addEventListener("DOMContentLoaded", function () {
+  function initStacking() {
+    const cards = gsap.utils.toArray(".portfolio-card") as HTMLElement[];
     
-    /* -------------------------------------------------------
-      ANIMATIONS NOW ENABLED ON ALL DEVICES INCLUDING MOBILE
-    ------------------------------------------------------- */
-    
-    // Refresh ScrollTrigger to ensure correct positions after layout stability
-    ScrollTrigger.refresh();
+    cards.forEach((card, index) => {
+      if (index === cards.length - 1) return; // Last card doesn't shrink
 
-    /* ---------------------------------
-       STACKING ANIMATION
-    ---------------------------------- */
-    const lastCard = document.querySelector(".last-pinned");
-    const sections = gsap.utils.toArray(".pinned");
-
-    sections.forEach((section, index) => {
-      if (section === lastCard) return;
-
-      const element = section as HTMLElement;
-      const effect = element.querySelector(".myeffect");
-      const nextSection = (sections[index + 1] || lastCard) as HTMLElement;
-
-      const distance = nextSection.offsetTop - element.offsetTop;
-
-      // Pin the section
-      ScrollTrigger.create({
-        trigger: element,
-        start: "top top",
-        end: "+=" + distance,
-        pin: true,
-        pinSpacing: false,
-        scrub: true,
-      });
-
-      // Alternate rotation
-      const rotation = index % 2 === 0 ? -20 : 20;
-
-      // Shrink/rotate section as next section approaches
-      gsap.fromTo(
-        effect,
-        { scale: 1, y: 0 },
-        {
-          scale: 0.3,
-          rotation: rotation,
-          y: 400,
-          ease: "power1.inOut",
-          scrollTrigger: {
-            trigger: element,
-            start: "top top",
-            end: "+=" + distance,
-            scrub: true,
-
-            // Hide previous section once transition almost complete
-            onUpdate: (self) => {
-              element.style.visibility =
-                self.progress > 0.9 ? "hidden" : "visible";
-            }
-          }
+      const nextCard = cards[index + 1];
+      
+      gsap.to(card, {
+        scale: 0.9,
+        opacity: 0.5,
+        y: -50,
+        ease: "none",
+        scrollTrigger: {
+          trigger: nextCard,
+          start: "top 80%",
+          end: "top 20%",
+          scrub: true,
         }
-      );
+      });
     });
-  });
+  }
+
+  // Handle both initial load and potential View Transitions
+  document.addEventListener("DOMContentLoaded", initStacking);
+  // If user uses Astro View Transitions
+  document.addEventListener("astro:page-load", initStacking);
 </script>
 
 <style>
-  /* Ensure smooth transitions */
-  .myeffect {
-    transform-origin: center center;
-    will-change: transform;
-  }
-  
-  .pinned, .last-pinned {
-    will-change: transform;
+  .portfolio-card {
+    transform-origin: top center;
+    will-change: transform, opacity;
   }
 </style>
