@@ -1,17 +1,18 @@
 ---
-import verflix1 from '../img/verflix1.webp';
+import verflix_mv1 from '../img/verflix_mv1.webp';
 import imgpro from '../img/imgpro.webp';
-import elementor from '../img/elementor.webp';
+import elementor1 from '../img/elementor1.webp';
 
 const projects = [
   {
     id: "01",
     title: "VerFlix",
     category: "Web App / API",
-    image: verflix1.src,
+    image: verflix_mv1.src,
     description: "Plataforma de streaming cinematic con integración de TMDB API. Diseño moderno y experiencia de usuario fluida.",
     slug: "verflix",
-    bgColor: "#031605"
+    bgColor: "#031605",
+    liveUrl: "https://verflix.codev.cloud/"
   },
   {
     id: "02",
@@ -20,16 +21,18 @@ const projects = [
     image: imgpro.src,
     description: "Optimización y edición masiva de imágenes directamente en el navegador. Herramienta potente y rápida.",
     slug: "imgpros",
-    bgColor: "#031605"
+    bgColor: "#031605",
+    liveUrl: "https://imgpros.netlify.app/"
   },
   {
     id: "03",
     title: "ElementorIA",
     category: "Workflow Tool / Extension",
-    image: elementor.src,
+    image: elementor1.src,
     description: "Extensión para mejorar el flujo de maquetación responsive en Elementor. Productividad mejorada.",
     slug: "elementoria",
-    bgColor: "#031605"
+    bgColor: "#031605",
+    liveUrl: "https://github.com/SandraRGdev/ExtensionesIA"
   }
 ];
 ---
@@ -89,8 +92,10 @@ const projects = [
                     </svg>
                   </a>
                   
-                  <a 
-                    href="#"
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[rgba(224,204,250,0.3)] text-[rgba(224,204,250,1)] font-light hover:bg-[rgba(224,204,250,0.1)] transition-all"
                   >
                     Live Demo

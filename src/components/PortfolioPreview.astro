@@ -1,7 +1,7 @@
 ---
 import verflix1 from '../img/verflix1.webp';
 import imgpro from '../img/imgpro.webp';
-import elementor from '../img/elementor.webp';
+import elementor1 from '../img/elementor1.webp';
 
 const featuredProjects = [
   { 
@@ -16,11 +16,11 @@ const featuredProjects = [
     slug: 'imgpros', 
     image: imgpro.src,
   },
-  { 
-    title: 'ElementorIA', 
+  {
+    title: 'ElementorIA',
     location: 'EXTENSION',
-    slug: 'elementoria', 
-    image: elementor.src,
+    slug: 'elementoria',
+    image: elementor1.src,
   }
 ];
 ---
@@ -33,10 +33,11 @@ const featuredProjects = [
     <div class="absolute inset-0 bg-[#011314]"></div>
     
     {featuredProjects.map((project, index) => (
-      <div 
+      <div
         class="gallery-bg-img absolute inset-0 opacity-0 pointer-events-none"
         style={`background-image: url(${project.image})`}
         data-index={index}
+        data-project={project.slug}
       >
         <div class="absolute inset-0 bg-black/75"></div>
       </div>
@@ -131,6 +132,12 @@ const featuredProjects = [
     background-position: center;
     background-repeat: no-repeat;
     transition: transform 1.2s ease-out;
+  }
+
+  /* Ajuste específico para elementoria - imagen vertical 590x708 */
+  .gallery-bg-img[data-project="elementoria"] {
+    background-position: center center;
+    background-size: cover;
   }
 
   .portfolio-fade-up {
